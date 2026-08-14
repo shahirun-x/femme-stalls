@@ -1,0 +1,19 @@
+<svg viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="120" rx="16" fill="#1A0A12"/>
+  <!-- Emblem Circle -->
+  <circle cx="60" cy="60" r="46" fill="#0D0509" stroke="#E91E8B" stroke-width="2.5"/>
+  <circle cx="60" cy="60" r="41" stroke="#C5A55A" stroke-width="1" stroke-dasharray="3 3"/>
+  <!-- Heart -->
+  <path d="M60 38 C52 24, 30 28, 30 48 C30 66, 56 82, 60 86 C64 82, 90 66, 90 48 C90 28, 68 24, 60 38 Z" fill="#E91E8B"/>
+  <path d="M60 45 C53 33, 37 37, 37 51 C37 63, 57 75, 60 78 C63 75, 83 63, 83 51 C83 37, 67 33, 60 45 Z" fill="#EC4899"/>
+  <!-- Cradling Hands Motif -->
+  <path d="M34 74 C42 82, 52 86, 60 86 C68 86, 78 82, 86 74 C82 81, 72 90, 60 90 C48 90, 38 81, 34 74 Z" fill="#C5A55A"/>
+  <circle cx="60" cy="30" r="3" fill="#D4AF37"/>
+  
+  <!-- Text Brand -->
+  <text x="125" y="58" font-family="'Playfair Display', Georgia, serif" font-weight="900" font-size="28" fill="#E91E8B" letter-spacing="1.5">FEMME</text>
+  <text x="235" y="47" font-family="'Inter', sans-serif" font-weight="600" font-size="9" fill="#F472B6" letter-spacing="2">GEOHOMZ ARCADE</text>
+  <text x="235" y="58" font-family="'Playfair Display', Georgia, serif" font-weight="900" font-size="28" fill="#E91E8B" letter-spacing="1.5">STALLS</text>
+  <text x="125" y="90" font-family="'Dancing Script', cursive, serif" font-weight="700" font-size="24" fill="#C5A55A">Organise the unorganised</text>
+</svg>
