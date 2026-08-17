@@ -141,9 +141,9 @@ src/
 - [x] Phase 7: Opportunities Page
 - [x] Phase 8: Events Page
 - [x] Phase 9: Partners Page
-- [ ] Phase 10: Media Page
-- [ ] Phase 11: Transparency Page
-- [ ] Phase 12: Contact / Join Page
+- [x] Phase 10: Media Page
+- [x] Phase 11: Transparency Page
+- [x] Phase 12: Contact / Join Page
 - [ ] Phase 13+: Supabase Integration & Member Area
 
 ## Important Notes
