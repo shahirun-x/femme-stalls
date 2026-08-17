@@ -1,23 +1,28 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/shared/placeholder-page";
+import {
+  MediaHero,
+  NewsSection,
+  PressCoverage,
+  PhotoGallery,
+  VideoGallery,
+  MediaCTA,
+} from "@/components/media";
 
 export const metadata: Metadata = {
-  title: "Media & Press — Femme Stalls",
-  description: "Browse photo galleries, press coverage, event videos, and news articles featuring Femme Stalls.",
+  title: "Media — Femme Stalls",
+  description:
+    "News, press coverage, photos and videos from Femme Stalls events and activities. Media resources and press contact.",
 };
 
 export default function MediaPage() {
   return (
-    <PlaceholderPage
-      title="Media & Press Gallery"
-      subtitle="Stories, Photo Archives & Video Coverage"
-      badge="Media"
-      description="Relive memorable moments from our past stall fairs, awards ceremonies, entrepreneur spotlights, and community celebrations."
-      highlights={[
-        { title: "Photo Galleries", desc: "High-resolution photo collections capturing the energy, color, and spirit of our expos." },
-        { title: "Press & News", desc: "Feature articles, newspaper coverage, and interviews highlighting our members." },
-        { title: "Video Highlights", desc: "Short documentaries, stall walkthroughs, and entrepreneur testimonial videos." },
-      ]}
-    />
+    <>
+      <MediaHero />
+      <NewsSection />
+      <PressCoverage />
+      <PhotoGallery />
+      <VideoGallery />
+      <MediaCTA />
+    </>
   );
 }
