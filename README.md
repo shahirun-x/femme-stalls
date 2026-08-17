@@ -26,3 +26,21 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 - `npm run build` — production build
 - `npm run start` — serve the production build
 - `npm run lint` — lint the codebase
+
+## Pages
+
+| Route | Status |
+|---|---|
+| `/` | Home |
+| `/about` | About |
+| `/femme-stalls` | Femme Stalls (flagship marketplace) |
+| `/members` | Members (registration form, directory) |
+| `/programmes` | Programmes & Training |
+| `/opportunities` | Opportunities (FEMMEI Investors, finance, market access) |
+| `/events` | Events (upcoming, annual calendar, archive) |
+| `/partners` | Partners & Supporters |
+| `/media` | Media — coming soon |
+| `/transparency` | Transparency — coming soon |
+| `/contact` | Contact — coming soon |
+
+See `CLAUDE.md` and `docs/femme-stalls-build-plan.md` (project root, one level up) for the full design system and build plan.
