@@ -82,6 +82,10 @@ body {
   animation: bounce-slow 2.2s ease-in-out infinite;
 }
 
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
