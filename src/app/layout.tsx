@@ -25,13 +25,16 @@ const dancingScript = Dancing_Script({
   display: "swap",
 });
 
-const siteUrl = "https://femme-stalls.vercel.app";
+const siteUrl = "https://femmestalls.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: "Femme Stalls — Organise the Unorganised",
     template: "%s | Femme Stalls",
+  },
+  alternates: {
+    canonical: siteUrl,
   },
   description:
     "A women-led community platform from Kilakarai, Tamil Nadu, India, backed by Geohomz. Empowering women entrepreneurs through community stalls, exhibitions, training, and business networks.",

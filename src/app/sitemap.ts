@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const baseUrl = "https://femme-stalls.vercel.app";
+const baseUrl = "https://femmestalls.com";
 
 const routes = [
   "",
