@@ -9,7 +9,7 @@ import {
 } from "@/components/programmes";
 
 export const metadata: Metadata = {
-  title: "Programmes — Femme Stalls",
+  title: "Programmes",
   description:
     "Training, development and group activities for women entrepreneurs. From entrepreneurship to digital marketing, financial literacy to community wellness.",
 };

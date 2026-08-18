@@ -9,7 +9,7 @@ import {
 } from "@/components/partners";
 
 export const metadata: Metadata = {
-  title: "Partners — Femme Stalls",
+  title: "Partners",
   description:
     "Our partner organisations, media partners, sponsors and institutional supporters. Partner with Femme Stalls to support women entrepreneurship.",
 };

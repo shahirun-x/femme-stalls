@@ -14,7 +14,7 @@ import {
 } from "@/components/stalls";
 
 export const metadata: Metadata = {
-  title: "Femme Stalls — The Community Marketplace",
+  title: "The Community Marketplace",
   description:
     "FEMME Stalls is a recurring community marketplace where women from Kilakarai showcase and sell their products, home businesses and skills. Register for the next edition.",
 };

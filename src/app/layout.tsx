@@ -25,8 +25,14 @@ const dancingScript = Dancing_Script({
   display: "swap",
 });
 
+const siteUrl = "https://femme-stalls.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Femme Stalls — Organise the Unorganised",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Femme Stalls — Organise the Unorganised",
+    template: "%s | Femme Stalls",
+  },
   description:
     "A women-led community platform from Kilakarai, Tamil Nadu, India, backed by Geohomz. Empowering women entrepreneurs through community stalls, exhibitions, training, and business networks.",
   keywords: [
@@ -44,7 +50,7 @@ export const metadata: Metadata = {
     title: "Femme Stalls — Organise the Unorganised",
     description:
       "A network of women entrepreneurs and aspiring entrepreneurs from Kilakarai and beyond.",
-    url: "https://femmestalls.com",
+    url: siteUrl,
     siteName: "Femme Stalls",
     images: [
       {
@@ -57,8 +63,20 @@ export const metadata: Metadata = {
     locale: "en_IN",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Femme Stalls — Organise the Unorganised",
+    description:
+      "A network of women entrepreneurs and aspiring entrepreneurs from Kilakarai and beyond.",
+    images: ["/images/logo.svg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 

@@ -9,7 +9,7 @@ import {
 } from "@/components/media";
 
 export const metadata: Metadata = {
-  title: "Media — Femme Stalls",
+  title: "Media",
   description:
     "News, press coverage, photos and videos from Femme Stalls events and activities. Media resources and press contact.",
 };

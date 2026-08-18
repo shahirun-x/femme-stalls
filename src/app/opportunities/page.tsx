@@ -10,7 +10,7 @@ import {
 } from "@/components/opportunities";
 
 export const metadata: Metadata = {
-  title: "Opportunities — Femme Stalls",
+  title: "Opportunities",
   description:
     "Business, finance, investment and collaboration opportunities for women entrepreneurs. FEMMEI Investors, market access, government schemes and more.",
 };

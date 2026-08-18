@@ -8,7 +8,7 @@ import {
 } from "@/components/transparency";
 
 export const metadata: Metadata = {
-  title: "Transparency & Governance — Femme Stalls",
+  title: "Transparency & Governance",
   description:
     "Bye-laws, governance structure, financial transparency and policies. Femme Stalls is committed to openness and accountability.",
 };

@@ -11,7 +11,7 @@ import {
 } from "@/components/about";
 
 export const metadata: Metadata = {
-  title: "About — Femme Stalls",
+  title: "About",
   description:
     "Learn about Femme Stalls — a self-evolving, women-led community platform from Kilakarai, Tamil Nadu. Our vision, mission, story, and leadership.",
 };
