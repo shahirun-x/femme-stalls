@@ -1,33 +1,23 @@
 import {
   HeroSection,
-  AboutPreview,
+  ValueIconsRow,
+  EventBanner,
+  DiscoverBusinesses,
   WhyFemmeStalls,
-  UpcomingEvent,
-  BecomeMemberCTA,
-  MemberDirectoryPreview,
-  OpportunitiesPreview,
-  ProgrammesPreview,
   PartnersStrip,
-  SuccessStories,
-  LatestNews,
-  FinalCTA,
+  FooterBanner,
 } from "@/components/home";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <AboutPreview />
+      <ValueIconsRow />
+      <EventBanner />
+      <DiscoverBusinesses />
       <WhyFemmeStalls />
-      <UpcomingEvent />
-      <BecomeMemberCTA />
-      <MemberDirectoryPreview />
-      <OpportunitiesPreview />
-      <ProgrammesPreview />
       <PartnersStrip />
-      <SuccessStories />
-      <LatestNews />
-      <FinalCTA />
+      <FooterBanner />
     </>
   );
 }

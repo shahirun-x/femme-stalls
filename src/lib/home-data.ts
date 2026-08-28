@@ -1,225 +1,189 @@
+/**
+ * Content for the Femme Stalls landing page.
+ * Kept as typed constants so copy can be edited here or moved to a CMS later.
+ */
+
+// --- Hero -----------------------------------------------------------------
+export const hero = {
+  title: "FEMME STALLS",
+  scriptLines: ["Women Supporting Women.", "Businesses Growing Together."],
+  taglineDots: "Organise the Unorganised • Connect • Collaborate • Grow",
+  intro:
+    "A growing network connecting women entrepreneurs from Kilakarai, Chennai, India & the NRI community.",
+  primaryCta: { label: "Join Femme Stalls", href: "/members#register" },
+  secondaryCta: { label: "Explore Member Businesses", href: "/members" },
+  image: {
+    src: "/images/placeholder/hero-women.jpg",
+    alt: "Women entrepreneurs together at a Femme Stalls community event",
+  },
+} as const;
+
+// --- Value propositions (Section 2) -------------------------------------
+export interface ValueItem {
+  icon: string; // Lucide icon name
+  title: string;
+  description: string;
+}
+
+export const valueItems: ValueItem[] = [
+  {
+    icon: "ShoppingBag",
+    title: "Sell Online",
+    description: "Sell your products to a wider market through our online platform.",
+  },
+  {
+    icon: "Package",
+    title: "Source Better",
+    description: "Find materials, suppliers and bulk-buying opportunities.",
+  },
+  {
+    icon: "BookOpen",
+    title: "Learn & Grow",
+    description: "Access training, mentoring and business resources to grow.",
+  },
+  {
+    icon: "Users",
+    title: "Collaborate",
+    description: "Find business partners, distributors and joint venture opportunities.",
+  },
+  {
+    icon: "HeartHandshake",
+    title: "Support & Finance",
+    description:
+      "Explore micro-finance and direct donor support opportunities, subject to eligibility.",
+  },
+  {
+    icon: "Globe",
+    title: "Reach New Markets",
+    description: "Take your business from Kilakarai to Chennai, India and the world.",
+  },
+];
+
+// --- Event banner (Section 3) -----------------------------------------
+export const upcomingEvent = {
+  eyebrow: "Femme Stalls – Kilakarai",
+  title: "FEMME STALLS – KILAKARAI",
+  dates: "25–27 December 2026",
+  description:
+    "Our annual platform bringing together women entrepreneurs, products, customers, partners and opportunities.",
+  registrationStatus: "Registrations Open Soon!",
+  primaryCta: { label: "Register Now", href: "/members#register" },
+  secondaryCta: { label: "Know More", href: "/events" },
+  logo: {
+    src: "/images/placeholder/femme-stalls-event-logo.png",
+    alt: "Femme Stalls Kilakarai event emblem",
+  },
+} as const;
+
+// --- Discover Femme Businesses (Section 4) ---------------------------
+export interface DiscoverCategory {
+  name: string;
+  image: string;
+}
+
+export const discoverCategories: DiscoverCategory[] = [
+  { name: "Handicrafts", image: "/images/placeholder/handicrafts.jpg" },
+  { name: "Jewellery", image: "/images/placeholder/jewellery.jpg" },
+  { name: "Food & Snacks", image: "/images/placeholder/food-snacks.jpg" },
+  { name: "Beauty & Wellness", image: "/images/placeholder/beauty-wellness.jpg" },
+  { name: "Fashion & More", image: "/images/placeholder/fashion.jpg" },
+];
+
+// --- Why Femme Stalls (Section 5) ----------------------------------
+export interface WhyFlowStep {
+  label: string;
+  icon: string; // Lucide icon name
+}
+
+export const whyFlowSteps: WhyFlowStep[] = [
+  { label: "Members", icon: "Users" },
+  { label: "Learn", icon: "BookOpen" },
+  { label: "Network", icon: "Share2" },
+  { label: "Source", icon: "Package" },
+  { label: "Sell", icon: "ShoppingBag" },
+  { label: "Collaborate", icon: "HeartHandshake" },
+  { label: "Grow", icon: "TrendingUp" },
+];
+
+export interface ImpactStat {
+  value: string;
+  label: string;
+}
+
+export const impactStats: ImpactStat[] = [
+  { value: "500+", label: "Members" },
+  { value: "50+", label: "Business Categories" },
+  { value: "12+", label: "FEMME Stalls" },
+  { value: "100+", label: "Training Programmes" },
+  { value: "1", label: "Strong Community" },
+];
+
+// --- Partners strip (Section 6) ----------------------------------
+export interface PartnerLogo {
+  name: string;
+  image: string;
+}
+
+export interface PartnerCategory {
+  title: string;
+  logos: PartnerLogo[];
+}
+
+export const partnerCategories: PartnerCategory[] = [
+  {
+    title: "Partner Organisations",
+    logos: [
+      { name: "Geohomz Initiatives", image: "/images/placeholder/geohomz.png" },
+      { name: "Partner Name", image: "/images/placeholder/partner-2.png" },
+      { name: "Partner Name", image: "/images/placeholder/partner-3.png" },
+    ],
+  },
+  {
+    title: "Media Partners",
+    logos: [
+      { name: "Media Partner", image: "/images/placeholder/media-1.png" },
+      { name: "Media Partner", image: "/images/placeholder/media-2.png" },
+      { name: "Media Partner", image: "/images/placeholder/media-3.png" },
+    ],
+  },
+  {
+    title: "Sponsors",
+    logos: [
+      { name: "Sponsor Name", image: "/images/placeholder/sponsor-1.png" },
+      { name: "Sponsor Name", image: "/images/placeholder/sponsor-2.png" },
+    ],
+  },
+  {
+    title: "Institutions",
+    logos: [
+      { name: "Institution Name", image: "/images/placeholder/institution-1.png" },
+      { name: "Institution Name", image: "/images/placeholder/institution-2.png" },
+    ],
+  },
+];
+
+// --- Footer banner (Section 7) ----------------------------------
+export interface SocialLink {
+  label: string;
+  href: string;
+  icon: string; // Lucide icon name
+}
+
+export const footerBanner = {
+  headline: "Together, We Grow.",
+  subline: "Organise the Unorganised • Connect • Collaborate • Grow",
+  socials: [
+    { label: "Facebook", href: "https://facebook.com", icon: "Facebook" },
+    { label: "Instagram", href: "https://instagram.com", icon: "Instagram" },
+    { label: "YouTube", href: "https://youtube.com", icon: "Youtube" },
+    { label: "WhatsApp", href: "https://wa.me/", icon: "MessageCircle" },
+  ] as SocialLink[],
+} as const;
+
+// Backwards-compatible export used elsewhere on the site.
 export interface HeroStat {
   value: string;
   label: string;
 }
 
-export const heroStats: HeroStat[] = [
-  { value: "12+", label: "Stall Expos Held" },
-  { value: "500+", label: "Women Members" },
-  { value: "100%", label: "Women Led" },
-  { value: "Kilakarai", label: "Tamil Nadu, India" },
-];
-
-export interface AboutStep {
-  label: string;
-}
-
-export const aboutJourneySteps: AboutStep[] = [
-  { label: "Community Participation" },
-  { label: "Confidence" },
-  { label: "Skills" },
-  { label: "Income" },
-  { label: "Self-Reliance" },
-];
-
-export const aboutParagraphs: string[] = [
-  "FEMME Stalls is a self-evolving, women-led community platform that grew from the experience of the Kilakarai Trade Fair — an initiative that has been bringing together local talent, entrepreneurs, businesses and the community for over a decade.",
-  "What began as a small initiative has evolved into a recurring community platform where women can learn, sell, network, gain confidence and gradually become economically self-reliant.",
-];
-
-export interface ValueCard {
-  icon: "ShoppingBag" | "Users" | "BookOpen" | "Lightbulb" | "Globe2" | "HeartHandshake";
-  title: string;
-  description: string;
-}
-
-export const valueCards: ValueCard[] = [
-  {
-    icon: "ShoppingBag",
-    title: "Market Access",
-    description: "Showcase and sell your products through FEMME Stalls and partner networks.",
-  },
-  {
-    icon: "Users",
-    title: "Community Network",
-    description: "Connect with fellow women entrepreneurs from Kilakarai, Chennai and beyond.",
-  },
-  {
-    icon: "BookOpen",
-    title: "Training & Skills",
-    description: "Access programmes in business, digital marketing, finance and more.",
-  },
-  {
-    icon: "Lightbulb",
-    title: "Business Support",
-    description: "Get guidance on registration, accounts, branding and market readiness.",
-  },
-  {
-    icon: "Globe2",
-    title: "Growth Opportunities",
-    description: "Explore collaborations, joint ventures, and new market channels.",
-  },
-  {
-    icon: "HeartHandshake",
-    title: "Confidence & Leadership",
-    description: "Build your confidence through participation, recognition and peer support.",
-  },
-];
-
-export interface UpcomingEventData {
-  eyebrow: string;
-  title: string;
-  date: string;
-  venue: string;
-  description: string;
-}
-
-export const upcomingEvent: UpcomingEventData = {
-  eyebrow: "Upcoming",
-  title: "FEMME Stalls 13",
-  date: "Coming Soon — 2026",
-  venue: "Kilakarai, Tamil Nadu",
-  description:
-    "Our next edition bringing together women entrepreneurs, home businesses, and the community.",
-};
-
-export const membershipBenefits: string[] = [
-  "Priority stall allocation at every edition",
-  "Access to training, mentorship and workshops",
-  "Feature in the Member Directory",
-  "Networking with investors and collaborators",
-];
-
-export interface DirectoryCategory {
-  label: string;
-}
-
-export const directoryCategories: DirectoryCategory[] = [
-  { label: "Food & Catering" },
-  { label: "Handmade Crafts" },
-  { label: "Clothing & Textiles" },
-  { label: "Beauty & Wellness" },
-  { label: "Home Products" },
-  { label: "Services" },
-];
-
-export interface OpportunityCard {
-  icon: "TrendingUp" | "Handshake" | "Globe";
-  title: string;
-  description: string;
-}
-
-export const opportunityCards: OpportunityCard[] = [
-  {
-    icon: "TrendingUp",
-    title: "FEMMEI Investors",
-    description:
-      "A network of people interested in supporting women entrepreneurs through investment, mentoring and partnerships.",
-  },
-  {
-    icon: "Handshake",
-    title: "Collaborations",
-    description:
-      "Chennai ↔ Kilakarai, NRI partnerships, joint ventures, distribution networks and franchise opportunities.",
-  },
-  {
-    icon: "Globe",
-    title: "Market Access",
-    description:
-      "Exhibitions, e-commerce, export readiness and new market channels for your products.",
-  },
-];
-
-export interface ProgrammeCard {
-  number: string;
-  title: string;
-  description: string;
-}
-
-export const programmeCards: ProgrammeCard[] = [
-  {
-    number: "01",
-    title: "Entrepreneurship",
-    description: "Start, grow and manage your own business.",
-  },
-  {
-    number: "02",
-    title: "Digital Marketing",
-    description: "Learn to promote your business online and on social media.",
-  },
-  {
-    number: "03",
-    title: "Financial Literacy",
-    description: "Understand accounts, budgets, loans and government schemes.",
-  },
-  {
-    number: "04",
-    title: "Get Organised",
-    description: "Business → Accounts → Documents → Registration → Finance → Market.",
-  },
-];
-
-export const partnerPlaceholders: string[] = [
-  "Partner Logo",
-  "Partner Logo",
-  "Partner Logo",
-  "Partner Logo",
-  "Partner Logo",
-  "Partner Logo",
-  "Partner Logo",
-  "Partner Logo",
-];
-
-export interface Testimonial {
-  quote: string;
-  name: string;
-  business: string;
-}
-
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      "FEMME Stalls gave me the confidence to turn my home kitchen into a real business. Today I supply to three shops in town.",
-    name: "Member Name",
-    business: "Home-based Catering",
-  },
-  {
-    quote:
-      "I never thought I could stand behind a stall and sell my own products. Now I look forward to every edition.",
-    name: "Member Name",
-    business: "Handmade Crafts",
-  },
-  {
-    quote:
-      "The training programmes helped me understand pricing and accounts. My business is more organised than ever.",
-    name: "Member Name",
-    business: "Clothing & Textiles",
-  },
-];
-
-export interface NewsItem {
-  date: string;
-  title: string;
-  excerpt: string;
-}
-
-export const newsItems: NewsItem[] = [
-  {
-    date: "June 2025",
-    title: "FEMME Stalls 12 — A Record-Breaking Edition",
-    excerpt:
-      "Our largest gathering yet brought together hundreds of women entrepreneurs from across the region.",
-  },
-  {
-    date: "May 2025",
-    title: "New Training Programme: Digital Marketing for Home Businesses",
-    excerpt:
-      "A hands-on workshop series helping members promote their products online and on social media.",
-  },
-  {
-    date: "April 2025",
-    title: "FEMME Circle Partners with Chennai Business Network",
-    excerpt:
-      "A new collaboration opens doors for Kilakarai entrepreneurs to reach wider markets.",
-  },
-];
+export const heroStats: HeroStat[] = impactStats.slice(0, 4);

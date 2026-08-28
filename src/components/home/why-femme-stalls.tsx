@@ -1,52 +1,55 @@
-import React from "react";
-import {
-  ShoppingBag,
-  Users,
-  BookOpen,
-  Lightbulb,
-  Globe2,
-  HeartHandshake,
-  type LucideIcon,
-} from "lucide-react";
+import { Fragment } from "react";
+import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/shared/container";
-import { SectionHeader } from "@/components/shared/section-header";
-import { valueCards, type ValueCard } from "@/lib/home-data";
-
-const iconMap: Record<ValueCard["icon"], LucideIcon> = {
-  ShoppingBag,
-  Users,
-  BookOpen,
-  Lightbulb,
-  Globe2,
-  HeartHandshake,
-};
+import { Icon } from "@/components/shared/icon";
+import { impactStats, whyFlowSteps } from "@/lib/home-data";
 
 export function WhyFemmeStalls() {
   return (
-    <section className="py-16 md:py-20 lg:py-24 bg-femme-warm-white">
-      <Container size="lg">
-        <SectionHeader badge="Why Join Us" title="Why Femme Stalls" />
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-          {valueCards.map((card) => {
-            const Icon = iconMap[card.icon];
-            return (
-              <div
-                key={card.title}
-                className="bg-white border border-femme-warm-border rounded-xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-              >
-                <div className="w-11 h-11 rounded-full bg-femme-pink-100 text-femme-pink flex items-center justify-center mb-4">
-                  <Icon className="w-5 h-5" aria-hidden="true" />
-                </div>
-                <h3 className="font-display font-semibold text-base sm:text-lg text-foreground mb-1.5">
-                  {card.title}
-                </h3>
-                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                  {card.description}
-                </p>
-              </div>
-            );
-          })}
+    <section className="bg-femme-warm-bg py-16 md:py-20">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
+          <div>
+            <h2 className="font-display text-xl font-bold text-femme-pink md:text-2xl">
+              Why Femme Stalls?
+            </h2>
+            <p className="mt-3 max-w-md text-sm leading-relaxed text-gray-700 md:text-base">
+              We don&rsquo;t just organise stalls.
+              <br />
+              We organise people, businesses and opportunities.
+            </p>
+          </div>
+
+          <ol className="-mx-4 flex items-start gap-1 overflow-x-auto px-4 pb-2 lg:mx-0 lg:flex-wrap lg:justify-end lg:overflow-visible lg:px-0">
+            {whyFlowSteps.map((step, i) => (
+              <Fragment key={step.label}>
+                <li className="flex w-16 shrink-0 flex-col items-center text-center">
+                  <span className="flex size-10 items-center justify-center rounded-full bg-femme-pink text-white">
+                    <Icon name={step.icon} className="size-5" strokeWidth={2} />
+                  </span>
+                  <span className="mt-2 text-[11px] font-medium text-femme-dark">{step.label}</span>
+                </li>
+                {i < whyFlowSteps.length - 1 && (
+                  <ChevronRight
+                    className="mt-2.5 size-4 shrink-0 text-femme-pink/60"
+                    aria-hidden="true"
+                  />
+                )}
+              </Fragment>
+            ))}
+          </ol>
         </div>
+
+        <ul className="mt-14 grid grid-cols-2 gap-y-8 rounded-2xl bg-white/70 py-8 ring-1 ring-femme-warm-border sm:grid-cols-3 lg:grid-cols-5 lg:divide-x lg:divide-femme-warm-border">
+          {impactStats.map((stat) => (
+            <li key={stat.label} className="px-4 text-center">
+              <span className="block font-display text-2xl font-bold text-femme-pink md:text-3xl">
+                {stat.value}
+              </span>
+              <span className="mt-1 block text-sm text-gray-600">{stat.label}</span>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );
