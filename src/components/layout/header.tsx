@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, ChevronDown, Sparkles, HeartHandshake } from "lucide-react";
-import { navLinks } from "./nav-links";
+import { navLinks, type NavItem } from "./nav-links";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +21,33 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
+
+/**
+ * Desktop nav has limited horizontal room between ~1024px and ~1300px.
+ * Collapse the two lowest-traffic top-level links into a "More" dropdown so
+ * every destination stays reachable without horizontal scroll. The mobile
+ * drawer still renders the full, flat `navLinks` list.
+ */
+const GROUPED_INTO_MORE = new Set(["Media", "Transparency"]);
+
+const desktopNavLinks: NavItem[] = (() => {
+  const kept = navLinks.filter((link) => !GROUPED_INTO_MORE.has(link.label));
+  const moreChildren = navLinks
+    .filter((link) => GROUPED_INTO_MORE.has(link.label))
+    .map((link) => ({ label: link.label, href: link.href }));
+
+  if (moreChildren.length === 0) return kept;
+
+  const moreItem: NavItem = {
+    label: "More",
+    href: moreChildren[0].href,
+    children: moreChildren,
+  };
+  const contactIdx = kept.findIndex((link) => link.label === "Contact");
+  return contactIdx === -1
+    ? [...kept, moreItem]
+    : [...kept.slice(0, contactIdx), moreItem, ...kept.slice(contactIdx)];
+})();
 
 export function Header() {
   const pathname = usePathname();
@@ -55,18 +82,21 @@ export function Header() {
           : "h-[72px] lg:h-[84px] bg-[#FFFBFE]/90 backdrop-blur-sm border-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Left: Logo */}
-        <div className="flex items-center">
-          <Logo size="md" className="hidden sm:inline-flex" />
-          <Logo variant="icon" size="sm" className="sm:hidden" />
+      <div className="max-w-[1440px] mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+        {/* Left: Logo — full lockup only fits alongside the nav from 2xl up */}
+        <div className="flex items-center shrink-0">
+          <Logo size="md" className="hidden 2xl:inline-flex" />
+          <Logo variant="icon" size="sm" className="2xl:hidden" />
         </div>
 
         {/* Desktop Navigation (>= 1024px) */}
-        <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2" aria-label="Main Navigation">
-          {navLinks.map((item) => {
+        <nav className="hidden lg:flex items-center space-x-0.5 2xl:space-x-1" aria-label="Main Navigation">
+          {desktopNavLinks.map((item, index) => {
             const hasChildren = item.children && item.children.length > 0;
             const itemActive = isActive(item.href);
+            // Right-align the dropdown for items near the end of the bar so the
+            // 220px panel never spills past the viewport edge.
+            const alignRight = index >= desktopNavLinks.length - 3;
 
             if (hasChildren) {
               return (
@@ -79,20 +109,21 @@ export function Header() {
                   <NextLink
                     href={item.href}
                     className={cn(
-                      "inline-flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md cursor-pointer",
+                      "inline-flex items-center gap-0.5 whitespace-nowrap rounded-md px-2 py-2 text-xs font-medium transition-colors duration-200 cursor-pointer 2xl:px-3 2xl:text-sm",
                       itemActive
                         ? "text-[#E91E8B] font-semibold"
                         : "text-[#1A0A12] hover:text-[#E91E8B]"
                     )}
                   >
                     <span>{item.label}</span>
-                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180 text-[#6B445A] group-hover:text-[#E91E8B]" />
+                    <ChevronDown className="h-3 w-3 transition-transform duration-200 group-hover:rotate-180 text-[#6B445A] group-hover:text-[#E91E8B]" />
                   </NextLink>
 
                   {/* Dropdown Menu */}
                   <div
                     className={cn(
-                      "absolute top-full left-0 mt-1 min-w-[220px] rounded-card border border-[#F3D5E5] bg-[#FFFBFE] p-2 shadow-xl backdrop-blur-lg transition-all duration-200 z-50",
+                      "absolute top-full mt-1 min-w-[220px] rounded-card border border-[#F3D5E5] bg-[#FFFBFE] p-2 shadow-xl backdrop-blur-lg transition-all duration-200 z-50",
+                      alignRight ? "right-0" : "left-0",
                       activeDropdown === item.label
                         ? "opacity-100 visible translate-y-0"
                         : "opacity-0 invisible -translate-y-2 pointer-events-none"
@@ -119,9 +150,9 @@ export function Header() {
                 key={item.label}
                 href={item.href}
                 className={cn(
-                  "relative px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-md",
+                  "relative whitespace-nowrap rounded-md px-2 py-2 text-xs font-medium transition-colors duration-200 2xl:px-3 2xl:text-sm",
                   itemActive
-                    ? "text-[#E91E8B] font-semibold after:absolute after:bottom-0 after:left-3 after:right-3 after:h-[2px] after:bg-[#E91E8B]"
+                    ? "text-[#E91E8B] font-semibold after:absolute after:bottom-0 after:inset-x-2 after:h-[2px] after:bg-[#E91E8B]"
                     : "text-[#1A0A12] hover:text-[#E91E8B]"
                 )}
               >
@@ -132,14 +163,14 @@ export function Header() {
         </nav>
 
         {/* Right Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
           <Button
             asChild
             variant="default"
-            className="bg-[#E91E8B] hover:bg-[#BE185D] text-white rounded-full px-6 py-2.5 shadow-sm hover:shadow-md transition-all hover:scale-[1.02]"
+            className="bg-[#E91E8B] hover:bg-[#BE185D] text-white rounded-full px-3.5 py-1.5 text-xs shadow-sm hover:shadow-md transition-all hover:scale-[1.02] whitespace-nowrap 2xl:px-5 2xl:py-2.5 2xl:text-sm"
           >
             <NextLink href="/contact#join">
-              <Sparkles className="w-4 h-4 mr-1.5" />
+              <Sparkles className="w-3.5 h-3.5 mr-1 2xl:w-4 2xl:h-4 2xl:mr-1.5" />
               Join Us
             </NextLink>
           </Button>

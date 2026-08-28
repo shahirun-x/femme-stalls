@@ -223,7 +223,7 @@ export function Footer() {
               <span className="text-xs uppercase tracking-wider text-white/50 block mb-2 font-semibold">
                 Social Media
               </span>
-              <div className="flex items-center gap-2.5">
+              <div className="flex flex-wrap items-center gap-2.5">
                 <a
                   href="https://whatsapp.com"
                   target="_blank"
