@@ -1,3 +1,5 @@
+import type { EditionLinks } from "@/lib/stalls-data";
+
 export const eventsHero = {
   eyebrow: "Events & Calendar",
   title: "Events",
@@ -109,13 +111,25 @@ export interface PastEvent {
   title: string;
   category: EventCategory;
   date: string;
+  links?: EditionLinks;
 }
 
+/**
+ * NOTE: Link values of "#" are placeholders — the client will supply the real
+ * album/post URLs per event. The UI skips "#" links entirely.
+ */
+const placeholderLinks: EditionLinks = {
+  facebookAlbum: "#",
+  instagramPost: "#",
+  youtubeVideo: "#",
+  photoGallery: "/media#photos",
+};
+
 export const pastEvents: PastEvent[] = [
-  { title: "FEMME Stalls 12", category: "FEMME Stalls", date: "Coming soon" },
-  { title: "Financial Literacy Workshop", category: "Training", date: "Coming soon" },
-  { title: "Women's Networking Meet — March", category: "Networking", date: "Coming soon" },
-  { title: "FEMME Stalls 11", category: "FEMME Stalls", date: "Coming soon" },
-  { title: "Community Sports Day — February", category: "Community", date: "Coming soon" },
-  { title: "Business Registration Workshop", category: "Training", date: "Coming soon" },
+  { title: "FEMME Stalls 12", category: "FEMME Stalls", date: "Coming soon", links: placeholderLinks },
+  { title: "Financial Literacy Workshop", category: "Training", date: "Coming soon", links: placeholderLinks },
+  { title: "Women's Networking Meet — March", category: "Networking", date: "Coming soon", links: placeholderLinks },
+  { title: "FEMME Stalls 11", category: "FEMME Stalls", date: "Coming soon", links: placeholderLinks },
+  { title: "Community Sports Day — February", category: "Community", date: "Coming soon", links: placeholderLinks },
+  { title: "Business Registration Workshop", category: "Training", date: "Coming soon", links: placeholderLinks },
 ];

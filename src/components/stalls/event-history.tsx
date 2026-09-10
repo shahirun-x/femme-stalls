@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Camera, ArrowRight } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { SectionHeader } from "@/components/shared/section-header";
+import { EditionSocialLinks } from "@/components/shared/edition-social-links";
 import { eventEditions, eventHistoryNote } from "@/lib/stalls-data";
 
 export function EventHistory() {
@@ -15,15 +16,15 @@ export function EventHistory() {
           {eventEditions.map((edition) => (
             <article
               key={edition.edition}
-              className="bg-white rounded-xl border border-femme-warm-border shadow-sm overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg"
+              className="bg-white rounded-xl border border-femme-warm-border shadow-sm overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col"
             >
               <div className="aspect-video bg-gradient-to-br from-femme-pink-300 via-femme-pink-400 to-femme-gold/60 flex flex-col items-center justify-center gap-1.5 text-white/90">
                 <Camera className="w-6 h-6" aria-hidden="true" />
                 <span className="text-xs font-medium">Photos coming soon</span>
               </div>
-              <div className="p-5">
-                <span className="inline-block bg-femme-pink-100 text-femme-pink text-xs font-bold px-3 py-1 rounded-full mb-3">
-                  {edition.edition}
+              <div className="p-5 flex flex-col flex-1">
+                <span className="inline-block self-start bg-femme-pink-100 text-femme-pink text-xs font-bold px-3 py-1 rounded-full mb-3">
+                  {edition.name}
                 </span>
                 <h3 className="font-display font-semibold text-base text-foreground mb-1">
                   {edition.venue}
@@ -37,6 +38,11 @@ export function EventHistory() {
                   View Details
                   <ArrowRight className="w-4 h-4" />
                 </Link>
+                <EditionSocialLinks
+                  links={edition.links}
+                  label={edition.name}
+                  className="mt-4 pt-3 border-t border-femme-warm-border"
+                />
               </div>
             </article>
           ))}

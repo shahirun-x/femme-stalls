@@ -4,6 +4,7 @@ import { Check, ArrowRight, MessageCircle } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { SectionHeader } from "@/components/shared/section-header";
 import { joinNote, joinBenefits, joinTimeNote, whatsappNumber } from "@/lib/contact-data";
+import { CONTACT, WHATSAPP_MESSAGES } from "@/lib/constants";
 
 export function JoinSection() {
   return (
@@ -41,9 +42,17 @@ export function JoinSection() {
               Go to Registration Form
               <ArrowRight className="w-4 h-4" />
             </Link>
-            <p className="text-muted-foreground text-sm flex items-center justify-center gap-2">
+            <p className="text-muted-foreground text-sm flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
               <MessageCircle className="w-4 h-4 text-femme-pink" aria-hidden="true" />
-              Or contact us directly on WhatsApp: {whatsappNumber}
+              <span>Or contact us directly on WhatsApp:</span>
+              <a
+                href={CONTACT.whatsappLink(WHATSAPP_MESSAGES.membership)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-femme-pink hover:text-femme-pink-700 transition-colors"
+              >
+                {whatsappNumber}
+              </a>
             </p>
           </div>
         </div>

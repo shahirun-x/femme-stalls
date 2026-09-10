@@ -2,6 +2,7 @@ import React from "react";
 import { Mail, MessageCircle, Download } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { pressContact } from "@/lib/media-data";
+import { CONTACT, WHATSAPP_MESSAGES } from "@/lib/constants";
 
 export function MediaCTA() {
   return (
@@ -20,14 +21,22 @@ export function MediaCTA() {
             {pressContact.role}
           </p>
           <div className="space-y-3 text-left">
-            <p className="flex items-center gap-2.5 text-sm text-foreground">
+            <a
+              href={CONTACT.mailtoLink("Press enquiry — Femme Stalls")}
+              className="flex items-center gap-2.5 text-sm text-foreground hover:text-femme-pink transition-colors"
+            >
               <Mail className="w-4 h-4 text-femme-pink shrink-0" aria-hidden="true" />
               {pressContact.email}
-            </p>
-            <p className="flex items-center gap-2.5 text-sm text-foreground">
+            </a>
+            <a
+              href={CONTACT.whatsappLink(WHATSAPP_MESSAGES.press)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 text-sm text-foreground hover:text-femme-pink transition-colors"
+            >
               <MessageCircle className="w-4 h-4 text-femme-pink shrink-0" aria-hidden="true" />
               {pressContact.whatsapp}
-            </p>
+            </a>
           </div>
         </div>
 

@@ -1,9 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import { Check, MessageCircle } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { SectionHeader } from "@/components/shared/section-header";
 import { registrationChecklist, pricingTiers, pricingNote } from "@/lib/stalls-data";
+import { CONTACT, WHATSAPP_MESSAGES } from "@/lib/constants";
 
 export function RegistrationInfo() {
   return (
@@ -49,13 +49,15 @@ export function RegistrationInfo() {
         </div>
 
         <div className="text-center">
-          <Link
-            href="/contact"
+          <a
+            href={CONTACT.whatsappLink(WHATSAPP_MESSAGES.stallRegistration)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-femme-pink font-semibold hover:text-femme-pink-700 transition-colors"
           >
             <MessageCircle className="w-4 h-4" />
-            Contact the Coordinator
-          </Link>
+            Contact the Coordinator on WhatsApp — {CONTACT.phone}
+          </a>
         </div>
       </Container>
     </section>

@@ -1,9 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import { ArrowRight, Mail } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { SectionHeader } from "@/components/shared/section-header";
 import { sponsorshipTiers } from "@/lib/stalls-data";
+import { CONTACT, WHATSAPP_MESSAGES } from "@/lib/constants";
 
 export function SponsorshipSection() {
   return (
@@ -29,25 +29,29 @@ export function SponsorshipSection() {
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                 {tier.description}
               </p>
-              <Link
-                href="/contact"
+              <a
+                href={CONTACT.whatsappLink(
+                  `${WHATSAPP_MESSAGES.sponsorship} (${tier.name})`
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-femme-pink font-semibold text-sm hover:text-femme-pink-700 transition-colors"
               >
                 Enquire
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           ))}
         </div>
 
         <div className="text-center">
-          <Link
-            href="/contact"
+          <a
+            href={CONTACT.mailtoLink("Sponsorship enquiry — Femme Stalls")}
             className="inline-flex items-center gap-2 text-muted-foreground text-sm hover:text-femme-pink transition-colors"
           >
             <Mail className="w-4 h-4" />
-            For sponsorship enquiries, contact us
-          </Link>
+            For sponsorship enquiries, email {CONTACT.email}
+          </a>
         </div>
       </Container>
     </section>

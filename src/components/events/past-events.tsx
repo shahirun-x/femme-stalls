@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Camera, ArrowRight } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { SectionHeader } from "@/components/shared/section-header";
+import { EditionSocialLinks } from "@/components/shared/edition-social-links";
 import { pastEvents, pastEventsIntro, categoryColors } from "@/lib/events-data";
 
 export function PastEvents() {
@@ -40,6 +41,11 @@ export function PastEvents() {
                     View Report
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
+                  <EditionSocialLinks
+                    links={event.links}
+                    label={event.title}
+                    className="mt-3 pt-3 border-t border-femme-warm-border"
+                  />
                 </div>
               </article>
             );

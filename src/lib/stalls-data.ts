@@ -242,18 +242,44 @@ export const byeLawCategories: ByeLawCategory[] = [
 
 export const byeLawsNote = "The bye-laws are subject to periodic review by the Executive Committee.";
 
+export interface EditionLinks {
+  facebookAlbum?: string;
+  instagramPost?: string;
+  youtubeVideo?: string;
+  /** Internal link into the site's own photo gallery. */
+  photoGallery?: string;
+}
+
 export interface EventEdition {
-  edition: string;
+  /** 1 through 12. */
+  edition: number;
+  name: string;
   date: string;
   venue: string;
   highlight: string;
+  links?: EditionLinks;
 }
 
+/**
+ * All 12 editions carry the links structure so real URLs can be dropped in
+ * per edition without touching any component.
+ *
+ * NOTE: The client will supply the real Facebook album, Instagram post and
+ * YouTube video URLs for each edition. Until then they stay as "#", which the
+ * UI treats as "not yet available" and simply does not render.
+ */
 export const eventEditions: EventEdition[] = Array.from({ length: 12 }, (_, i) => ({
-  edition: `FEMME ${i + 1}`,
+  edition: i + 1,
+  name: `FEMME Stalls ${i + 1}`,
   date: "Coming soon",
   venue: "Kilakarai",
   highlight: "Details to be updated",
+  links: {
+    facebookAlbum: "#",
+    instagramPost: "#",
+    youtubeVideo: "#",
+    photoGallery: "/media#photos",
+  },
 }));
 
 export const eventHistoryNote =

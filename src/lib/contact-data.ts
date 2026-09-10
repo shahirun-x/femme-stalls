@@ -1,3 +1,5 @@
+import { CONTACT, SOCIAL_LINKS, WHATSAPP_MESSAGES } from "@/lib/constants";
+
 export const contactHero = {
   eyebrow: "Get in Touch",
   title: "Contact & Join",
@@ -15,7 +17,7 @@ export const joinBenefits: string[] = [
 
 export const joinTimeNote = "It takes less than 2 minutes to register.";
 
-export const whatsappNumber = "+91 (0) 98765 43210";
+export const whatsappNumber = CONTACT.phone;
 
 export interface PartnerType {
   icon: "Building2" | "Heart" | "Landmark" | "Newspaper" | "TrendingUp" | "Handshake";
@@ -48,22 +50,36 @@ export interface ContactDetail {
 }
 
 export const contactDetails: ContactDetail[] = [
-  { icon: "MapPin", label: "Address", value: "Kilakarai, Ramanathapuram District, Tamil Nadu, India" },
-  { icon: "MessageCircle", label: "WhatsApp", value: "+91 (0) 98765 43210" },
-  { icon: "Mail", label: "Email", value: "hello@femmestalls.com" },
+  { icon: "MapPin", label: "Address", value: CONTACT.address },
+  { icon: "MessageCircle", label: "WhatsApp", value: CONTACT.phone },
+  { icon: "Mail", label: "Email", value: CONTACT.email },
   { icon: "Clock", label: "Response Time", value: "We typically respond within 24 hours" },
 ];
 
 export interface SocialLink {
-  icon: "MessageCircle" | "Instagram" | "Facebook" | "Youtube" | "Twitter";
+  icon: "MessageCircle" | "Instagram" | "Facebook" | "Youtube";
   label: string;
+  href: string;
   colorClass: string;
 }
 
+/**
+ * Profile URLs come from SOCIAL_LINKS in lib/constants.ts, where they are
+ * currently placeholder handles pending client confirmation.
+ */
 export const socialLinks: SocialLink[] = [
-  { icon: "MessageCircle", label: "WhatsApp", colorClass: "bg-[#25D366]" },
-  { icon: "Instagram", label: "Instagram", colorClass: "bg-gradient-to-br from-femme-pink to-femme-pink-700" },
-  { icon: "Facebook", label: "Facebook", colorClass: "bg-[#1877F2]" },
-  { icon: "Youtube", label: "YouTube", colorClass: "bg-[#FF0000]" },
-  { icon: "Twitter", label: "Twitter / X", colorClass: "bg-femme-dark" },
+  {
+    icon: "MessageCircle",
+    label: "WhatsApp",
+    href: CONTACT.whatsappLink(WHATSAPP_MESSAGES.general),
+    colorClass: "bg-[#25D366]",
+  },
+  {
+    icon: "Instagram",
+    label: "Instagram",
+    href: SOCIAL_LINKS.instagram,
+    colorClass: "bg-gradient-to-br from-femme-pink to-femme-pink-700",
+  },
+  { icon: "Facebook", label: "Facebook", href: SOCIAL_LINKS.facebook, colorClass: "bg-[#1877F2]" },
+  { icon: "Youtube", label: "YouTube", href: SOCIAL_LINKS.youtube, colorClass: "bg-[#FF0000]" },
 ];

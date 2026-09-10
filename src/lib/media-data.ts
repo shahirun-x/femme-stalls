@@ -1,3 +1,5 @@
+import { CONTACT } from "@/lib/constants";
+
 export const mediaHero = {
   eyebrow: "News & Media",
   title: "Media",
@@ -103,6 +105,6 @@ export const videoItems: VideoItem[] = [
 
 export const pressContact = {
   role: "Media Coordinator",
-  email: "media@femmestalls.com",
-  whatsapp: "+91 (0) 98765 43210",
+  email: CONTACT.email,
+  whatsapp: CONTACT.phone,
 };

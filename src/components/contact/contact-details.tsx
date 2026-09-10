@@ -3,6 +3,7 @@ import { MapPin, MessageCircle, Mail, Clock, type LucideIcon } from "lucide-reac
 import { Container } from "@/components/shared/container";
 import { SectionHeader } from "@/components/shared/section-header";
 import { contactDetails, type ContactDetail } from "@/lib/contact-data";
+import { CONTACT, WHATSAPP_MESSAGES } from "@/lib/constants";
 
 const iconMap: Record<ContactDetail["icon"], LucideIcon> = {
   MapPin,
@@ -22,6 +23,7 @@ export function ContactDetails() {
             {contactDetails.map((detail) => {
               const Icon = iconMap[detail.icon];
               const isWhatsapp = detail.icon === "MessageCircle";
+              const isEmail = detail.icon === "Mail";
               return (
                 <div key={detail.label} className="flex items-center gap-4">
                   <span className="shrink-0 w-11 h-11 rounded-full bg-femme-pink-100 text-femme-pink flex items-center justify-center">
@@ -33,8 +35,17 @@ export function ContactDetails() {
                     </p>
                     {isWhatsapp ? (
                       <a
-                        href="#"
+                        href={CONTACT.whatsappLink(WHATSAPP_MESSAGES.general)}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 bg-[#25D366] text-white text-sm font-semibold rounded-full px-4 py-1.5 mt-1 hover:opacity-90 transition-opacity"
+                      >
+                        {detail.value}
+                      </a>
+                    ) : isEmail ? (
+                      <a
+                        href={CONTACT.mailtoLink()}
+                        className="text-foreground text-sm sm:text-base hover:text-femme-pink transition-colors"
                       >
                         {detail.value}
                       </a>

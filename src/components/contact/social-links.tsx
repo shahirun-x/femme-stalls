@@ -1,14 +1,14 @@
 import React from "react";
-import { MessageCircle, Instagram, Facebook, Youtube, Twitter, type LucideIcon } from "lucide-react";
+import { MessageCircle, Instagram, Facebook, Youtube, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { socialLinks, type SocialLink } from "@/lib/contact-data";
+import { CONTACT, WHATSAPP_MESSAGES } from "@/lib/constants";
 
 const iconMap: Record<SocialLink["icon"], LucideIcon> = {
   MessageCircle,
   Instagram,
   Facebook,
   Youtube,
-  Twitter,
 };
 
 export function SocialLinks() {
@@ -25,7 +25,9 @@ export function SocialLinks() {
             return (
               <a
                 key={social.label}
-                href="#"
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={social.label}
                 className={`w-12 h-12 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 hover:shadow-lg ${social.colorClass}`}
               >
@@ -39,7 +41,9 @@ export function SocialLinks() {
           Join our WhatsApp group for the latest updates
         </p>
         <a
-          href="#"
+          href={CONTACT.whatsappLink(WHATSAPP_MESSAGES.general)}
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center gap-2 bg-[#25D366] text-white font-semibold rounded-full px-6 py-3 text-sm mb-10 hover:opacity-90 transition-opacity"
         >
           <MessageCircle className="w-4 h-4" aria-hidden="true" />

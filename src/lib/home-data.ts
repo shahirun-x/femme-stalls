@@ -3,6 +3,8 @@
  * Kept as typed constants so copy can be edited here or moved to a CMS later.
  */
 
+import { CONTACT, SOCIAL_LINKS, WHATSAPP_MESSAGES } from "@/lib/constants";
+
 // --- Hero -----------------------------------------------------------------
 export const hero = {
   title: "FEMME STALLS",
@@ -173,10 +175,14 @@ export const footerBanner = {
   headline: "Together, We Grow.",
   subline: "Organise the Unorganised • Connect • Collaborate • Grow",
   socials: [
-    { label: "Facebook", href: "https://facebook.com", icon: "Facebook" },
-    { label: "Instagram", href: "https://instagram.com", icon: "Instagram" },
-    { label: "YouTube", href: "https://youtube.com", icon: "Youtube" },
-    { label: "WhatsApp", href: "https://wa.me/", icon: "MessageCircle" },
+    { label: "Facebook", href: SOCIAL_LINKS.facebook, icon: "Facebook" },
+    { label: "Instagram", href: SOCIAL_LINKS.instagram, icon: "Instagram" },
+    { label: "YouTube", href: SOCIAL_LINKS.youtube, icon: "Youtube" },
+    {
+      label: "WhatsApp",
+      href: CONTACT.whatsappLink(WHATSAPP_MESSAGES.general),
+      icon: "MessageCircle",
+    },
   ] as SocialLink[],
 } as const;
 

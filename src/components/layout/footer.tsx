@@ -9,11 +9,11 @@ import {
   MessageCircle,
   Instagram,
   Facebook,
-  Linkedin,
   Youtube,
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+import { CONTACT, SOCIAL_LINKS, WHATSAPP_MESSAGES } from "@/lib/constants";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import {
@@ -202,18 +202,18 @@ export function Footer() {
             <div className="space-y-3 text-sm text-white/70">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#E91E8B] shrink-0 mt-0.5" />
-                <span>Kilakarai, Ramanathapuram District, Tamil Nadu, India</span>
+                <span>{CONTACT.address}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#E91E8B] shrink-0" />
-                <a href="mailto:info@femmestalls.com" className="hover:text-white transition-colors">
-                  info@femmestalls.com
+                <a href={CONTACT.mailtoLink()} className="hover:text-white transition-colors">
+                  {CONTACT.email}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#E91E8B] shrink-0" />
-                <a href="tel:+919876543210" className="hover:text-white transition-colors">
-                  +91 (0) 98765 43210
+                <a href={CONTACT.telLink} className="hover:text-white transition-colors">
+                  {CONTACT.phone}
                 </a>
               </div>
             </div>
@@ -225,7 +225,7 @@ export function Footer() {
               </span>
               <div className="flex flex-wrap items-center gap-2.5">
                 <a
-                  href="https://whatsapp.com"
+                  href={CONTACT.whatsappLink(WHATSAPP_MESSAGES.general)}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
@@ -234,7 +234,7 @@ export function Footer() {
                   <MessageCircle className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
@@ -243,7 +243,7 @@ export function Footer() {
                   <Instagram className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://facebook.com"
+                  href={SOCIAL_LINKS.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Facebook"
@@ -252,16 +252,7 @@ export function Footer() {
                   <Facebook className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="p-2.5 rounded-full bg-[#2D1420] text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white transition-all"
-                >
-                  <Linkedin className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://youtube.com"
+                  href={SOCIAL_LINKS.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
