@@ -1,195 +1,226 @@
 /**
- * Content for the Femme Stalls landing page.
+ * Content for the Femme Stalls homepage.
  * Kept as typed constants so copy can be edited here or moved to a CMS later.
  */
 
-import { CONTACT, SOCIAL_LINKS, WHATSAPP_MESSAGES } from "@/lib/constants";
-
-// --- Hero -----------------------------------------------------------------
+// --- 1. Hero ----------------------------------------------------------------
 export const hero = {
-  title: "FEMME STALLS",
-  scriptLines: ["Women Supporting Women.", "Businesses Growing Together."],
-  taglineDots: "Organise the Unorganised • Connect • Collaborate • Grow",
+  eyebrow: "Kilakarai, Tamil Nadu",
+  titleLead: "Femme",
+  titleEmphasis: "Stalls",
+  subheadline: "Women supporting women. Businesses growing together.",
   intro:
-    "A growing network connecting women entrepreneurs from Kilakarai, Chennai, India & the NRI community.",
+    "A growing network connecting women entrepreneurs from Kilakarai, Chennai, across India and the NRI community — to learn, sell, collaborate and grow.",
   primaryCta: { label: "Join Femme Stalls", href: "/members#register" },
-  secondaryCta: { label: "Explore Member Businesses", href: "/members" },
+  secondaryCta: { label: "Explore member businesses", href: "/members#directory" },
   image: {
-    src: "/images/placeholder/hero-women.jpg",
-    alt: "Women entrepreneurs together at a Femme Stalls community event",
+    src: "/images/placeholder/hero.jpg",
+    alt: "Women entrepreneurs at a Femme Stalls community market in Kilakarai",
   },
+  badge: { lead: "Est.", place: "Kilakarai" },
 } as const;
 
-// --- Value propositions (Section 2) -------------------------------------
-export interface ValueItem {
-  icon: string; // Lucide icon name
+// --- 2. Marquee ------------------------------------------------------------
+export const marqueeCategories: string[] = [
+  "Handicrafts",
+  "Jewellery",
+  "Food & Snacks",
+  "Beauty & Wellness",
+  "Textiles",
+  "Home Products",
+  "Spices",
+  "Baked Goods",
+];
+
+// --- 3. What we offer (bento) ---------------------------------------------
+export const offerIntro = {
+  eyebrow: "What we offer",
+  titleLead: "Everything a woman-led business needs,",
+  titleEmphasis: "under one roof.",
+  body: "From your first stall to your first export order — practical support, a trusted network and the confidence that comes from growing together.",
+};
+
+export type OfferIcon = "Globe" | "BookOpen" | "Handshake" | "Package" | "HeartHandshake" | "FileCheck2";
+
+export interface OfferCard {
+  size: "feature" | "medium" | "small";
+  icon: OfferIcon;
   title: string;
-  description: string;
+  body: string;
+  href: string;
+  points?: string[];
 }
 
-export const valueItems: ValueItem[] = [
+export const offerCards: OfferCard[] = [
   {
-    icon: "ShoppingBag",
-    title: "Sell Online",
-    description: "Sell your products to a wider market through our online platform.",
-  },
-  {
-    icon: "Package",
-    title: "Source Better",
-    description: "Find materials, suppliers and bulk-buying opportunities.",
-  },
-  {
-    icon: "BookOpen",
-    title: "Learn & Grow",
-    description: "Access training, mentoring and business resources to grow.",
-  },
-  {
-    icon: "Users",
-    title: "Collaborate",
-    description: "Find business partners, distributors and joint venture opportunities.",
-  },
-  {
-    icon: "HeartHandshake",
-    title: "Support & Finance",
-    description:
-      "Explore micro-finance and direct donor support opportunities, subject to eligibility.",
-  },
-  {
+    size: "feature",
     icon: "Globe",
-    title: "Reach New Markets",
-    description: "Take your business from Kilakarai to Chennai, India and the world.",
+    title: "Sell beyond Kilakarai",
+    body: "Take your products from a single stall to Chennai, across India and to the NRI community — online and at exhibitions.",
+    href: "/members#directory",
+    points: ["Online storefront", "Exhibitions & fairs", "NRI & export reach"],
+  },
+  {
+    size: "medium",
+    icon: "BookOpen",
+    title: "Learn & grow",
+    body: "Training, mentoring and hands-on resources — pricing, digital marketing, accounts and more.",
+    href: "/programmes",
+  },
+  {
+    size: "medium",
+    icon: "Handshake",
+    title: "Collaborate",
+    body: "Meet partners, distributors and joint-venture opportunities inside the network.",
+    href: "/opportunities#collaborators",
+  },
+  {
+    size: "small",
+    icon: "Package",
+    title: "Source better",
+    body: "Suppliers, materials and bulk buying.",
+    href: "/opportunities#business",
+  },
+  {
+    size: "small",
+    icon: "HeartHandshake",
+    title: "Support & finance",
+    body: "Micro-finance and donor support, subject to eligibility.",
+    href: "/opportunities#finance",
+  },
+  {
+    size: "small",
+    icon: "FileCheck2",
+    title: "Get organised",
+    body: "Registration, accounts and documents, made simple.",
+    href: "/programmes#get-organised",
   },
 ];
 
-// --- Event banner (Section 3) -----------------------------------------
-export const upcomingEvent = {
-  eyebrow: "Femme Stalls – Kilakarai",
-  title: "FEMME STALLS – KILAKARAI",
-  dates: "25–27 December 2026",
-  description:
-    "Our annual platform bringing together women entrepreneurs, products, customers, partners and opportunities.",
-  registrationStatus: "Registrations Open Soon!",
-  primaryCta: { label: "Register Now", href: "/members#register" },
-  secondaryCta: { label: "Know More", href: "/events" },
-  logo: {
-    src: "/images/placeholder/femme-stalls-event-logo.png",
-    alt: "Femme Stalls Kilakarai event emblem",
-  },
-} as const;
+export const offerCta = {
+  eyebrow: "Membership",
+  title: "Join the network",
+  href: "/members#register",
+};
 
-// --- Discover Femme Businesses (Section 4) ---------------------------
+// --- 4. The numbers --------------------------------------------------------
+export const numbersIntro = {
+  eyebrow: "By the numbers",
+  titleLead: "A community,",
+  titleEmphasis: "counted.",
+  body: "Twelve editions in, the network keeps growing — one stall, one skill, one member at a time.",
+};
+
+export interface Stat {
+  value: number;
+  plus: boolean;
+  label: string;
+}
+
+export const stats: Stat[] = [
+  { value: 500, plus: true, label: "Members" },
+  { value: 50, plus: true, label: "Business categories" },
+  { value: 12, plus: false, label: "Editions held" },
+  { value: 100, plus: true, label: "Training programmes" },
+];
+
+// --- 5. Upcoming edition ---------------------------------------------------
+export const upcomingEdition = {
+  eyebrow: "The next edition",
+  days: "25–27",
+  monthYear: "December 2026",
+  title: "Femme Stalls · Kilakarai",
+  description:
+    "Our annual marketplace bringing together women entrepreneurs, their products, customers, partners and new opportunities — three days in the heart of Kilakarai.",
+  cta: { label: "Register your interest", href: "/members#register" },
+  stamp: { top: "Registrations", middle: "Open", bottom: "Soon" },
+};
+
+// --- 6. Discover -----------------------------------------------------------
+export const discoverIntro = {
+  eyebrow: "Discover",
+  titleLead: "Made by women,",
+  titleEmphasis: "sold with pride.",
+  body: "Browse the businesses in our network — from kitchen-table bakers to family jewellers.",
+  cta: { label: "View the member directory", href: "/members#directory" },
+};
+
 export interface DiscoverCategory {
   name: string;
+  note: string;
   image: string;
 }
 
 export const discoverCategories: DiscoverCategory[] = [
-  { name: "Handicrafts", image: "/images/placeholder/handicrafts.jpg" },
-  { name: "Jewellery", image: "/images/placeholder/jewellery.jpg" },
-  { name: "Food & Snacks", image: "/images/placeholder/food-snacks.jpg" },
-  { name: "Beauty & Wellness", image: "/images/placeholder/beauty-wellness.jpg" },
-  { name: "Fashion & More", image: "/images/placeholder/fashion.jpg" },
+  { name: "Handicrafts", note: "Woven, stitched & shaped by hand", image: "/images/placeholder/handicrafts.jpg" },
+  { name: "Jewellery", note: "Pearls, gold & everyday pieces", image: "/images/placeholder/jewellery.jpg" },
+  { name: "Food & Snacks", note: "Home kitchens, family recipes", image: "/images/placeholder/food-snacks.jpg" },
+  { name: "Beauty & Wellness", note: "Natural care & salon services", image: "/images/placeholder/beauty-wellness.jpg" },
+  { name: "Textiles", note: "Sarees, abayas & tailoring", image: "/images/placeholder/textiles.jpg" },
+  { name: "Home Products", note: "For kitchens & living spaces", image: "/images/placeholder/home-products.jpg" },
+  { name: "Spices & Pickles", note: "Blends from coastal kitchens", image: "/images/placeholder/spices.jpg" },
+  { name: "Baked Goods", note: "Cakes, sweets & celebration boxes", image: "/images/placeholder/baked-goods.jpg" },
 ];
 
-// --- Why Femme Stalls (Section 5) ----------------------------------
-export interface WhyFlowStep {
-  label: string;
-  icon: string; // Lucide icon name
-}
+// --- 7. The journey --------------------------------------------------------
+export const journeyIntro = {
+  eyebrow: "The journey",
+  titleLead: "From a single stall",
+  titleEmphasis: "to self-reliance.",
+  body: "Every member's path looks different, but the shape is the same. It starts with simply showing up — and it grows, step by step, into a business and a life built on your own terms.",
+};
 
-export const whyFlowSteps: WhyFlowStep[] = [
-  { label: "Members", icon: "Users" },
-  { label: "Learn", icon: "BookOpen" },
-  { label: "Network", icon: "Share2" },
-  { label: "Source", icon: "Package" },
-  { label: "Sell", icon: "ShoppingBag" },
-  { label: "Collaborate", icon: "HeartHandshake" },
-  { label: "Grow", icon: "TrendingUp" },
-];
+export type JourneyIcon = "Users" | "Sparkles" | "GraduationCap" | "Wallet" | "Sprout";
 
-export interface ImpactStat {
-  value: string;
-  label: string;
-}
-
-export const impactStats: ImpactStat[] = [
-  { value: "500+", label: "Members" },
-  { value: "50+", label: "Business Categories" },
-  { value: "12+", label: "FEMME Stalls" },
-  { value: "100+", label: "Training Programmes" },
-  { value: "1", label: "Strong Community" },
-];
-
-// --- Partners strip (Section 6) ----------------------------------
-export interface PartnerLogo {
-  name: string;
-  image: string;
-}
-
-export interface PartnerCategory {
+export interface JourneyStep {
+  icon: JourneyIcon;
   title: string;
-  logos: PartnerLogo[];
+  description: string;
 }
 
-export const partnerCategories: PartnerCategory[] = [
+export const journeySteps: JourneyStep[] = [
+  { icon: "Users", title: "Participation", description: "Join the community, take a stall, meet women walking the same road." },
+  { icon: "Sparkles", title: "Confidence", description: "Stand behind your own products and find your voice with customers." },
+  { icon: "GraduationCap", title: "Skills", description: "Learn pricing, marketing, accounts and the craft of running a business." },
+  { icon: "Wallet", title: "Income", description: "Turn skill into steady earnings — at stalls, online and through the network." },
+  { icon: "Sprout", title: "Self-reliance", description: "Stand on your own, then reach back and lift the next woman up." },
+];
+
+// --- 8. Voices -------------------------------------------------------------
+/**
+ * Placeholder testimonials — the client will supply real member quotes with
+ * permission. Attributions are intentionally generic until then.
+ */
+export interface Testimonial {
+  quote: string;
+  name: string;
+  business: string;
+}
+
+export const voicesHeading = "Voices from the network";
+
+export const testimonials: Testimonial[] = [
   {
-    title: "Partner Organisations",
-    logos: [
-      { name: "Geohomz Initiatives", image: "/images/placeholder/geohomz.png" },
-      { name: "Partner Name", image: "/images/placeholder/partner-2.png" },
-      { name: "Partner Name", image: "/images/placeholder/partner-3.png" },
-    ],
+    quote: "Femme Stalls gave me the confidence to turn my home kitchen into a real business. Today I supply three shops in town.",
+    name: "Femme Stalls member",
+    business: "Home-based catering, Kilakarai",
   },
   {
-    title: "Media Partners",
-    logos: [
-      { name: "Media Partner", image: "/images/placeholder/media-1.png" },
-      { name: "Media Partner", image: "/images/placeholder/media-2.png" },
-      { name: "Media Partner", image: "/images/placeholder/media-3.png" },
-    ],
+    quote: "I never thought I could stand behind a stall and sell my own work. Now I count the days to every edition.",
+    name: "Femme Stalls member",
+    business: "Handmade crafts",
   },
   {
-    title: "Sponsors",
-    logos: [
-      { name: "Sponsor Name", image: "/images/placeholder/sponsor-1.png" },
-      { name: "Sponsor Name", image: "/images/placeholder/sponsor-2.png" },
-    ],
-  },
-  {
-    title: "Institutions",
-    logos: [
-      { name: "Institution Name", image: "/images/placeholder/institution-1.png" },
-      { name: "Institution Name", image: "/images/placeholder/institution-2.png" },
-    ],
+    quote: "The training helped me understand pricing and accounts. My business is more organised than it has ever been.",
+    name: "Femme Stalls member",
+    business: "Clothing & textiles",
   },
 ];
 
-// --- Footer banner (Section 7) ----------------------------------
-export interface SocialLink {
-  label: string;
-  href: string;
-  icon: string; // Lucide icon name
-}
-
-export const footerBanner = {
-  headline: "Together, We Grow.",
-  subline: "Organise the Unorganised • Connect • Collaborate • Grow",
-  socials: [
-    { label: "Facebook", href: SOCIAL_LINKS.facebook, icon: "Facebook" },
-    { label: "Instagram", href: SOCIAL_LINKS.instagram, icon: "Instagram" },
-    { label: "YouTube", href: SOCIAL_LINKS.youtube, icon: "Youtube" },
-    {
-      label: "WhatsApp",
-      href: CONTACT.whatsappLink(WHATSAPP_MESSAGES.general),
-      icon: "MessageCircle",
-    },
-  ] as SocialLink[],
-} as const;
-
-// Backwards-compatible export used elsewhere on the site.
-export interface HeroStat {
-  value: string;
-  label: string;
-}
-
-export const heroStats: HeroStat[] = impactStats.slice(0, 4);
+// --- 9. Closing ------------------------------------------------------------
+export const closing = {
+  headline: "Together, we grow.",
+  tagline: "Organise the unorganised",
+  primaryCta: { label: "Join Femme Stalls", href: "/members#register" },
+  secondaryCtaLabel: "Chat on WhatsApp",
+};

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Mail,
   Phone,
@@ -24,9 +25,14 @@ import {
 } from "@/components/ui/accordion";
 
 export function Footer() {
+  // The homepage ends with its own closing CTA, so skip the band there to
+  // avoid a double call-to-action.
+  const isHome = usePathname() === "/";
+
   return (
     <footer className="w-full bg-[#1A0A12] text-white">
       {/* Pre-footer CTA Band */}
+      {!isHome && (
       <div className="relative overflow-hidden bg-gradient-to-r from-[#E91E8B] via-[#EC4899] to-[#BE185D] text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-white/10">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
@@ -63,15 +69,14 @@ export function Footer() {
           </div>
         </div>
       </div>
+      )}
 
       {/* Main Footer Body */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Column 1: Brand Info (Spans 2 cols on lg) */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="inline-block bg-[#0D0509] p-3 rounded-2xl border border-white/10">
-              <Logo size="md" />
-            </div>
+            <Logo size="md" tone="light" />
             <p className="text-white/70 text-sm leading-relaxed max-w-md pt-2">
               Femme Stalls is a women-led grassroots community platform from Kilakarai, Tamil Nadu. We empower aspiring and established women entrepreneurs to showcase talents, launch micro-enterprises, and achieve financial independence.
             </p>
@@ -206,7 +211,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#E91E8B] shrink-0" />
-                <a href={CONTACT.mailtoLink()} className="hover:text-white transition-colors">
+                <a href={CONTACT.mailtoLink()} className="min-w-0 break-all hover:text-white transition-colors">
                   {CONTACT.email}
                 </a>
               </div>
@@ -281,7 +286,7 @@ export function Footer() {
           </div>
 
           {/* Right */}
-          <div className="font-script text-[#C5A55A] text-lg">
+          <div className="font-display italic text-[#C5A55A] text-base">
             Organise the Unorganised
           </div>
         </div>

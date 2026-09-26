@@ -29,7 +29,28 @@ const config: Config = {
             light: "#D4AF37",
             dark: "#A68B3E",
             muted: "rgba(197, 165, 90, 0.2)",
+            /** Darker gold for small text on light grounds (AA contrast). */
+            ink: "#8A6D2B",
           },
+          // Editorial palette (homepage redesign)
+          rose: {
+            DEFAULT: "#B5225B",
+            deep: "#8E1A47",
+            soft: "#D86A93",
+          },
+          terracotta: {
+            DEFAULT: "#C4643C",
+            soft: "#E3A184",
+          },
+          cream: {
+            DEFAULT: "#FDF8F3",
+            deep: "#F6ECE1",
+          },
+          charcoal: {
+            DEFAULT: "#241118",
+            soft: "#3B2229",
+          },
+          blush: "#FBEEF3",
           dark: {
             DEFAULT: "#1A0A12",
             deep: "#0D0509",

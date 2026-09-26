@@ -6,7 +6,7 @@ export function ClientPageFooter() {
   return (
     <footer className="bg-[#1A0A12] text-white py-10 px-4 text-center">
       <div className="max-w-md mx-auto space-y-4">
-        <Logo variant="icon" size="sm" className="inline-flex" />
+        <Logo variant="compact" size="sm" />
         <p className="text-sm text-white/60">Powered by Femme Stalls</p>
         <div className="pt-2 border-t border-white/10">
           <p className="text-sm text-white/80 mb-3">Want a page like this for YOUR business?</p>

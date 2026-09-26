@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer";
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
   variable: "--font-playfair",
   display: "swap",
 });
@@ -55,14 +56,6 @@ export const metadata: Metadata = {
       "A network of women entrepreneurs and aspiring entrepreneurs from Kilakarai and beyond.",
     url: siteUrl,
     siteName: "Femme Stalls",
-    images: [
-      {
-        url: "/images/logo.svg",
-        width: 800,
-        height: 600,
-        alt: "Femme Stalls Logo",
-      },
-    ],
     locale: "en_IN",
     type: "website",
   },
@@ -71,7 +64,6 @@ export const metadata: Metadata = {
     title: "Femme Stalls — Organise the Unorganised",
     description:
       "A network of women entrepreneurs and aspiring entrepreneurs from Kilakarai and beyond.",
-    images: ["/images/logo.svg"],
   },
   robots: {
     index: true,
@@ -91,8 +83,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${playfair.variable} ${inter.variable} ${dancingScript.variable} scroll-smooth`}
     >
+      <head>
+        {/* Flags JS as available so scroll-reveal content is only hidden when it can be revealed. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.dataset.js=''" }} />
+      </head>
       <body className="min-h-screen flex flex-col bg-[#FFFBFE] text-[#1A0A12] antialiased selection:bg-[#E91E8B] selection:text-white">
         <Header />
         <main className="flex-1">{children}</main>

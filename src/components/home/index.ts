@@ -1,7 +1,9 @@
 export { HeroSection } from "./hero-section";
-export { ValueIconsRow } from "./value-icons-row";
-export { EventBanner } from "./event-banner";
-export { DiscoverBusinesses } from "./discover-businesses";
-export { WhyFemmeStalls } from "./why-femme-stalls";
-export { PartnersStrip } from "./partners-strip";
-export { FooterBanner } from "./footer-banner";
+export { CategoryMarquee } from "./category-marquee";
+export { OfferBento } from "./offer-bento";
+export { NumbersSection } from "./numbers-section";
+export { UpcomingEdition } from "./upcoming-edition";
+export { DiscoverGallery } from "./discover-gallery";
+export { JourneyPath } from "./journey-path";
+export { VoicesTestimonials } from "./voices-testimonials";
+export { ClosingCta } from "./closing-cta";

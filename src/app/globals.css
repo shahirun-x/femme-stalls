@@ -102,3 +102,67 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Editorial homepage utilities                                        */
+/* ------------------------------------------------------------------ */
+
+/* Film-grain overlay. The host needs `position: relative` (and usually
+   `isolate`); lift content above it with `relative z-10`. */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  opacity: 0.12;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Slow marquee — paused entirely for reduced-motion users. */
+.animate-marquee-slow {
+  animation: marquee 48s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-slow {
+    animation: none !important;
+  }
+}
+
+/* Scroll reveal. Content is only hidden once JS has flagged the document
+   (see layout.tsx), so nothing disappears if scripts fail. */
+[data-js] [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(20px);
+}
+[data-reveal] {
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-js] [data-reveal]:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Hidden scrollbar that keeps native scrolling (touch, trackpad, keys). */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* A horizontal scroller whose first item aligns with the page container
+   (max-w-7xl + gutters) while the track bleeds to the viewport edge. */
+.bleed-scroller {
+  --gutter: 1rem;
+  padding-inline: max(var(--gutter), calc((100% - 80rem) / 2 + var(--gutter)));
+  scroll-padding-inline: max(var(--gutter), calc((100% - 80rem) / 2 + var(--gutter)));
+}
+@media (min-width: 640px) {
+  .bleed-scroller { --gutter: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  .bleed-scroller { --gutter: 2rem; }
+}

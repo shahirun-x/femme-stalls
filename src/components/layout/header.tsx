@@ -31,7 +31,10 @@ import { cn } from "@/lib/utils";
 const GROUPED_INTO_MORE = new Set(["Media", "Transparency"]);
 
 const desktopNavLinks: NavItem[] = (() => {
-  const kept = navLinks.filter((link) => !GROUPED_INTO_MORE.has(link.label));
+  // The logo is the home link on desktop, so "Home" is left to the mobile drawer.
+  const kept = navLinks.filter(
+    (link) => link.label !== "Home" && !GROUPED_INTO_MORE.has(link.label)
+  );
   const moreChildren = navLinks
     .filter((link) => GROUPED_INTO_MORE.has(link.label))
     .map((link) => ({ label: link.label, href: link.href }));
@@ -86,7 +89,7 @@ export function Header() {
         {/* Left: Logo — full lockup only fits alongside the nav from 2xl up */}
         <div className="flex items-center shrink-0">
           <Logo size="md" className="hidden 2xl:inline-flex" />
-          <Logo variant="icon" size="sm" className="2xl:hidden" />
+          <Logo variant="compact" size="sm" className="2xl:hidden" />
         </div>
 
         {/* Desktop Navigation (>= 1024px) */}
