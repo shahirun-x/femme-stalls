@@ -19,7 +19,7 @@ Briefcase Building2 Calculator Calendar CalendarCheck CalendarDays Camera Check 
 ChevronDown ClipboardCheck ClipboardList Clock Coffee Compass Cookie Copy Crown Download Dumbbell
 ExternalLink Facebook Factory FileCheck FileCheck2 FileStack FileText Flower2 Gem Gift GitMerge
 Globe GraduationCap Grid3x3 Handshake Heart HeartHandshake Home Image Info Instagram Landmark
-Leaf Lightbulb Mail MapPin Megaphone Menu MessageCircle Minus Package Palette PartyPopper Phone
+Leaf Lightbulb Mail MapPin Megaphone Menu MessageCircle Minus Newspaper Package Palette PartyPopper Phone
 Plane Play Receipt RefreshCcw Rocket RotateCcw Ruler Scale School Scissors Search ShieldCheck
 Shirt ShoppingBag ShoppingCart Smartphone Soup Sparkles Sprout Star Store Tags Target
 TrendingUp Truck User UserCheck Users Users2 UtensilsCrossed Wallet Wrench X Youtube
