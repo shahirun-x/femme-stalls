@@ -109,6 +109,34 @@
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .marquee__track { animation: none !important; } }
 
+/* ---------- 3. The Geohomz family ---------- */
+.family { background: var(--blush); padding-block: 5.5rem; }
+@media (min-width: 768px) { .family { padding-block: 7rem; } }
+.family__head { max-width: 46rem; }
+.family__head .display-h2 { margin-top: 1.5rem; }
+.family__head p { margin-top: 1.25rem; max-width: 52ch; }
+.family__grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; list-style: none; padding: 0; }
+@media (min-width: 640px) { .family__grid { gap: 1.25rem; } }
+@media (min-width: 1024px) { .family__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; margin-top: 3.5rem; } }
+.family-card { display: flex; flex-direction: column; height: 100%; border-radius: 1.25rem; text-align: center; }
+.family-card.reveal { transition: opacity 0.8s var(--ease-out), transform 0.4s var(--ease-out); transition-delay: var(--delay, 0ms); }
+.family-card.is-visible { transition-delay: 0ms; }
+.family-card__plate {
+  display: flex; align-items: center; justify-content: center; height: 110px; padding: 1rem 1.125rem;
+  background: #fff; border: 1px solid rgba(196, 100, 60, 0.2); border-radius: 1.25rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+@media (min-width: 1024px) { .family-card__plate { height: 140px; padding: 1.25rem 1.75rem; } }
+.family-card__plate picture { display: contents; }
+.family-card__plate img { width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s var(--ease-out); }
+.family-card__plate img.is-tile { border-radius: 0.75rem; }
+.family-card__name { margin-top: 0.875rem; font-family: var(--font-display); font-weight: 600; font-size: 1.0625rem; line-height: 1.3; color: var(--charcoal); }
+.family-card__caption { margin-top: 0.25rem; font-size: 0.75rem; line-height: 1.4; color: rgba(36, 17, 24, 0.62); }
+.family-card:hover { transform: translateY(-4px); }
+.family-card:hover .family-card__plate { border-color: var(--gold); box-shadow: 0 18px 36px -24px rgba(36, 17, 24, 0.35); }
+.family-card:hover img { transform: scale(1.03); }
+a.family-card:focus-visible { outline: 2px solid var(--rose); outline-offset: 4px; }
+
 /* ---------- 4. What we offer (bento) ---------- */
 .offer { background: var(--cream); padding-block: 6rem; }
 @media (min-width: 768px) { .offer { padding-block: 8rem; } }
