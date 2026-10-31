@@ -3,152 +3,144 @@
 > Mirrors `CLAUDE.md` (maintained one directory up, alongside this repo) for AI coding agents that read `AGENTS.md` instead. Keep both in sync when either changes.
 
 ## Project Overview
-**Femme Stalls** is a production-level website for a women-led community platform from Kilakarai, Tamil Nadu, India. Backed by **Geohomz**. Tagline: **"Organise the Unorganised"**.
+**Femme Stalls** is a production website for a women-led community platform from Kilakarai, Tamil Nadu, India. An initiative of **Geohomz**. Tagline: **"Organise the Unorganised"**.
 
-This is NOT a template site. It should feel warm, community-driven, feminine, and distinctive — rooted in the real culture of Kilakarai women.
+It should feel warm, community-driven, feminine and distinctive — rooted in the real culture of Kilakarai women. Never a template.
 
-## Tech Stack
-- **Next.js 15** (App Router, Server Components, Turbopack)
-- **TypeScript** (strict mode, no `any`)
-- **Tailwind CSS v4** with custom design tokens
-- **Shadcn/UI** components (New York style)
-- **Supabase** (planned Phase 13+ — auth, DB, storage)
-- **Mobile-first** responsive design (375px → 1280px+)
+- The site is called **"Femme Stalls"** in all copy and titles. **FEMME Circle** is the parent association (the client's logo artwork reads "Femme Kilakarai Circle").
+- Geo Homz, Geohomz Kottaram, Geofudz and Keelai Snacks are **sister ventures** in the Geohomz family — never call them sponsors.
 
-## Build Plan
-The full build plan with all 13 phases, design system, file structure, and architecture is in:
-**`../femme-stalls-build-plan.md`** (project root, one level up from this repo)
+## Stack — static site (live)
+The live site is **`site/`**: plain HTML5, hand-written CSS with custom properties, vanilla JS. **No framework, no Tailwind, no build step to deploy.** It runs on any static host (Vercel, cPanel, `python -m http.server`).
 
-Always reference this file before starting work on any phase.
+The Next.js 15 app at the repo root (`src/`, `public/`, `package.json`) is kept as the **design/content reference** it was ported from. It is not deployed. Don't delete it, and don't add new features to it.
 
-## Design System
+| Concern | Where |
+|---|---|
+| Page content | Directly in each page's `index.html` (good for SEO) |
+| Shared header + footer | `site/assets/js/layout.js` (single source of truth) |
+| Contact, socials, WhatsApp messages, Sheets URL, Geohomz family | `site/assets/js/config.js` |
+| Behaviour (reveal, accordions, count-up, slider, scroller, filters) | `site/assets/js/ui.js` |
+| Forms → Google Sheets | `site/assets/js/forms.js` + `backend/google-apps-script/` |
+| Client stall pages | `site/assets/js/stall.js` + `site/data/stalls/*.json` |
 
-### Colors (from logo — two pink hands cradling a heart on black bg)
+## Folder map
+```
+site/
+  index.html                     homepage
+  about/ members/ femme-stalls/ programmes/ events/
+  opportunities/ partners/ media/ transparency/ contact/    each: index.html
+  stalls/index.html              stall directory (rendered from data/stalls/index.json)
+  stalls/<slug>/index.html       stall intro       ┐ thin shells rendered by stall.js
+  stalls/<slug>/products/        stall products    │ from data/stalls/<slug>.json
+  stalls/<slug>/orders/          reviews & orders  ┘
+  404.html  sitemap.xml  robots.txt  vercel.json  .htaccess  favicon.ico
+  assets/
+    css/base.css                 tokens, reset, header, drawer, footer, buttons, reveal (every page)
+    css/home.css                 homepage only
+    css/pages.css                shared inner-page components (hero, section head, cards, grid,
+                                 flows, timeline, accordion, forms)
+    css/<page>.css               one small file per inner page; stall.css for stall pages
+    js/config.js  layout.js  ui.js  forms.js  stall.js
+    brand/                       logos (PNG + WebP), favicons, og-image.png
+    img/                         photography (JPEG + WebP), stall logos
+    icons.svg                    Lucide SVG sprite
+  data/stalls/                   index.json + one <slug>.json per stall client
+backend/google-apps-script/      Code.gs + deploy README for the form backend
+scripts/                         dev-time asset generators (outputs are committed)
+```
+
+## Page template
+Every page follows the same shell (copy an existing page):
+
+```html
+<head> … per-page <title>, description, canonical (https://www.femmestalls.com/<path>/), OG/Twitter …
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/pages.css">       <!-- inner pages -->
+  <link rel="stylesheet" href="/assets/css/<page>.css">
+  <script src="/assets/js/ui.js" defer></script>
+</head>
+<body>
+<div id="site-header"></div>
+<script src="/assets/js/config.js"></script>   <!-- synchronous: header renders with no flash -->
+<script src="/assets/js/layout.js"></script>
+<main id="main" tabindex="-1"> … </main>
+<div id="site-footer"></div>                    <!-- injected on DOMContentLoaded -->
+</body>
+```
+
+### How to add a page
+1. Copy `site/about/` to `site/<new-slug>/` and edit `index.html`: title, description, canonical, OG/Twitter URLs, one `<h1>`, content.
+2. Reuse components from `pages.css`; put anything page-specific in a new `assets/css/<new-slug>.css` and link it.
+3. Add the route to the `NAV` array in `layout.js` (and footer link lists if relevant).
+4. Add the URL to `sitemap.xml`.
+5. Run the verification steps below.
+
+## Client stall pages
+Each stall client gets up to three pages: intro (free), products and reviews/orders (paid, gated manually by `pagesEnabled`).
+
+### How to add a stall client
+1. Copy `site/stalls/magalir-mattum/` to `site/stalls/<slug>/` (keep only the page folders the client has enabled).
+2. In each shell set `data-slug="<slug>"` and hand-edit `<title>`, description, canonical and OG tags.
+3. Add `site/data/stalls/<slug>.json` (copy `magalir-mattum.json`; the shape is the old `StallClient` type). `pagesEnabled` is `1` (intro), `2` (+ products) or `3` (+ reviews & orders).
+4. Add the slug to `site/data/stalls/index.json` so it appears on `/stalls/`.
+5. Put the logo at `site/assets/img/stalls/<slug>/logo.png` (+ `.webp`; `scripts/build-brand-assets.py` generates both from `public/stalls/<slug>/logo.png`).
+6. Add the URLs to `sitemap.xml`.
+
+Image fields left as `""` render a themed icon placeholder without making a request. Add the path when a real photo arrives.
+
+## Forms → Google Sheets
+- Two forms post to Sheets: **membership** (`/members/#register`) and **partner enquiry** (`/contact/#partner`). Every other "Register" CTA is a WhatsApp link.
+- `forms.js` sends `JSON.stringify({ formType, page, ...fields })` as `text/plain;charset=utf-8` (no CORS preflight) to `FS_CONFIG.SHEETS_ENDPOINT`, with a 15s timeout.
+- Field names must match `FORMS` in `backend/google-apps-script/Code.gs`. Checkbox groups (`interests`) are sent as arrays.
+- Hidden honeypot input `website`; the script ignores submissions that fill it.
+- **While `SHEETS_ENDPOINT` is `""`**, forms show a WhatsApp link prefilled with the visitor's answers and log a console warning. They never fake success.
+- Deploying the Apps Script and pasting its `/exec` URL into `config.js` is a manual step — see `backend/google-apps-script/README.md`.
+
+## Design system
+Tokens live in `:root` in `base.css`.
+
 | Token | Hex | Usage |
 |---|---|---|
-| `femme-pink` (DEFAULT/600) | `#E91E8B` | Primary brand — CTAs, headings, accents |
-| `femme-pink-50` | `#FFF0F7` | Lightest tint backgrounds |
-| `femme-pink-100` | `#FFE0EF` | Hover backgrounds |
-| `femme-pink-400` | `#F472B6` | Hover states, highlights, card accents |
-| `femme-pink-500` | `#EC4899` | Secondary accent, gradients |
-| `femme-pink-700` | `#BE185D` | Pressed states, dark accents |
-| `femme-pink-900` | `#831843` | Deepest pink |
-| `femme-gold` | `#C5A55A` | Taglines, premium elements, dividers |
-| `femme-gold-light` | `#D4AF37` | Gold hover states |
-| `femme-dark` | `#1A0A12` | Dark sections, text (warm near-black) |
-| `femme-dark-deep` | `#0D0509` | Footer, hero overlays |
-| `femme-dark-card` | `#2D1420` | Cards on dark backgrounds |
-| `femme-warm-white` | `#FFFBFE` | Main page background |
-| `femme-warm-bg` | `#FDF2F8` | Alternating section backgrounds |
-| `femme-warm-border` | `#F3D5E5` | Soft pink borders |
+| `--pink` | `#E91E8B` | Brand pink — inner-page CTAs, accents |
+| `--pink-50/100/200/300/400/500/700/800` | | Tints and shades |
+| `--gold` / `--gold-dark` / `--gold-ink` | `#C5A55A` / `#A68B3E` / `#8A6D2B` | Accents; `--gold-ink` for small text on light grounds (AA) |
+| `--dark` / `--dark-deep` / `--dark-card` | `#1A0A12` / `#0D0509` / `#2D1420` | Dark heroes, footer |
+| `--warm-white` / `--warm-bg` / `--warm-border` | `#FFFBFE` / `#FDF2F8` / `#F3D5E5` | Inner-page grounds, borders |
+| `--rose` / `--rose-deep` | `#B5225B` / `#8E1A47` | Homepage headings, key CTAs |
+| `--terracotta`, `--cream`, `--cream-deep`, `--charcoal`, `--blush` | | Homepage editorial palette |
 
-### Typography
-| Role | Font | Usage |
-|---|---|---|
-| Display/Headings | **Playfair Display** (serif) | Page titles, section headings, hero text |
-| Body | **Inter** (sans-serif) | Paragraphs, descriptions, UI text |
-| Script/Accent | **Dancing Script** (cursive) | Taglines like "Organise the unorganised" |
+- Type: **Playfair Display** (display, incl. italics), **Inter** (body), **Dancing Script** (rare signature flourishes). Loaded from Google Fonts with `display=swap`.
+- Breakpoints: 640 / 768 / 1024 / 1280 / 1536.
+- Inner-page line-heights deliberately mirror the Tailwind cascade of the Next app, e.g. a responsive font-size resets line-height to the size's default from 640px up. Keep that when editing so layouts stay consistent.
+- Icons: `<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#name"></use></svg>`. Stroke width is set in CSS (`.icon--thin` = 1.5). To add an icon, add its Lucide name to `scripts/build-icon-sprite.mjs` and run `node scripts/build-icon-sprite.mjs`.
+- **No emojis** anywhere in the UI.
+- Brand: the header uses the cropped hands-and-heart mark + the "Femme Stalls" wordmark set in Playfair (the `brand()` function in `layout.js`; swap it there for a horizontal lockup later). The footer uses the full logo on a cream plate.
 
-### Spacing & Layout
-- Mobile-first: design from 375px up
-- Breakpoints: `sm(640)`, `md(768)`, `lg(1024)`, `xl(1280)`
-- Section vertical padding: `py-16 md:py-20 lg:py-24`
-- Container max-width: `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`
-- Card border-radius: `rounded-xl` or `rounded-2xl`
-- Generous whitespace — never cramped
+## Conventions
+- Every page: one `<h1>`, semantic sections, `alt` text, explicit `width`/`height` on images, `loading="lazy"` below the fold, WebP via `<picture>` with JPEG/PNG fallback.
+- All phone/email/WhatsApp/social links come from `config.js`. In HTML use `data-wa="membership"` (key or literal message), `data-mail="Subject"`, `data-tel`, `data-social="instagram"`, and `<span data-contact="phone|email|address">`. `ui.js` fills them in.
+- Scroll reveal: add `class="reveal"` (+ `style="--delay:120ms"` to stagger). Reduced-motion users see content instantly.
+- Accordions: native `<details>` inside `.accordion`, with the body wrapped in `.accordion__panel`.
+- Budgets: CSS ≤ 60 KB and JS ≤ 30 KB per page, excluding fonts and images.
+- Never use `overflow-x: hidden` on `body`. Fix the overflowing element instead.
 
-### Design Principles
-- Warm, NOT corporate or NGO-generic
-- Soft rounded corners (lg/xl)
-- Pink-tinted section alternation (`femme-warm-white` ↔ `femme-warm-bg`)
-- Gold accents used sparingly for premium feel
-- Dark sections for hero areas and CTAs
-- Photo-heavy where possible (community, events, stalls)
-- Thumb-friendly tap targets on mobile (min 44px)
-- Subtle CSS transitions only — respect `prefers-reduced-motion`
-
-## File Structure
+## Verify before committing
+```bash
+python -m http.server 8080 --directory site
 ```
-src/
-├── app/
-│   ├── layout.tsx              # Root layout — fonts, metadata, header/footer
-│   ├── page.tsx                # Landing page (HOME)
-│   ├── about/page.tsx
-│   ├── members/page.tsx
-│   ├── femme-stalls/page.tsx
-│   ├── programmes/page.tsx
-│   ├── events/page.tsx
-│   ├── opportunities/page.tsx
-│   ├── partners/page.tsx
-│   ├── media/page.tsx
-│   ├── transparency/page.tsx
-│   └── contact/page.tsx
-├── components/
-│   ├── layout/                 # Header, Footer, MobileNav, nav-links
-│   ├── ui/                     # Shadcn/UI components
-│   ├── home/                   # Landing page section components
-│   ├── shared/                 # SectionHeader, CTABand, Container
-│   └── [page-name]/            # Page-specific components
-├── lib/
-│   ├── utils.ts                # cn() helper, shared utilities
-│   └── [page-name]-data.ts     # Typed content constants per page
-├── types/
-│   └── index.ts                # Shared TypeScript types
-└── app/globals.css             # Global styles, Tailwind imports, keyframes
-```
+- Visit every page: no console errors, no failed requests.
+- At 320, 375, 390, 428, 768, 1024, 1280, 1440 and 1920px, `document.documentElement.scrollWidth === clientWidth`.
+- Keyboard: header dropdowns (Tab, Enter/Space, arrows, Esc), mobile drawer (focus trap, Esc), accordions, both forms.
 
-## Coding Conventions
+## Hosting
+- **Vercel:** create a project with **Root Directory = `site`** and Framework Preset = Other (no build command). `site/vercel.json` sets clean URLs, trailing slashes, security and cache headers.
+- **cPanel / Apache:** upload the contents of `site/` to `public_html/`. `site/.htaccess` forces HTTPS + www, serves `404.html` and sets compression and caching.
+- Canonical domain: `https://www.femmestalls.com`.
 
-### Components
-- Use Server Components by default; add `'use client'` only when needed (interactivity, hooks)
-- One component per file, named export
-- Props via TypeScript interface, defined in the same file or `types/`
-- Keep components under 200 lines — extract sub-components if larger
-- Use `cn()` from `lib/utils` for conditional classes
+## Deferred
+- Member accounts / login and a members-only area (removed from the UI until built).
+- Real photography, social profile URLs (placeholders in `config.js`), PDFs for bye-laws/policies/press kit, real testimonials.
 
-### Naming
-- Files: `kebab-case.tsx`
-- Components: `PascalCase`
-- CSS/Tailwind: follow utility-first, minimal custom CSS
-- Routes: `kebab-case` folder names
-
-### Content
-- All body text content should be stored as constants or data objects (not hardcoded inline in JSX) so it's easy to update later or move to a CMS
-- Use placeholder images/gradients or descriptive alt-text until real images arrive
-
-### Quality
-- Zero console errors/warnings
-- `npm run build` and `npm run lint` must pass clean
-- Proper heading hierarchy (single `h1` per page)
-- Semantic HTML: `<section>`, `<article>`, `<nav>`, `<main>`, `<aside>`
-- All images: `next/image` with proper alt text, width, height
-- All links: proper `aria-label` where text isn't descriptive enough
-- Focus-visible styles on all interactive elements
-- Anchor-linked sections use `scroll-mt-20` so the sticky header doesn't clip them
-
-### Git
-- Commit after each completed sub-task within a phase
-- Commit messages: `feat(phase-N): description` or `fix(phase-N): description`
-- Branch strategy: work on `main` for now (solo dev)
-
-## Current Status
-- [x] Phase 1: Project Setup + App Shell (Header, Footer, Nav, Placeholders)
-- [x] Phase 2: Landing Page (HOME) — all sections
-- [x] Phase 3: About Page
-- [x] Phase 4: Femme Stalls Page
-- [x] Phase 5: Members Page
-- [x] Phase 6: Programmes Page
-- [x] Phase 7: Opportunities Page
-- [x] Phase 8: Events Page
-- [x] Phase 9: Partners Page
-- [x] Phase 10: Media Page
-- [x] Phase 11: Transparency Page
-- [x] Phase 12: Contact / Join Page
-- [ ] Phase 13+: Supabase Integration & Member Area
-
-## Important Notes
-- The site is called **"Femme Stalls"**, NOT "Femme Circle" — Femme Circle is the parent association
-- Logo SVG is at `public/images/logo.svg` (vector recreation — real PNG to be swapped later)
-- "An initiative of Geohomz" appears in the footer in small gold text
-- The guiding principle flow: Community Participation → Confidence → Skills → Income → Self-Reliance
-- Respect the community's values — content should be empowering but culturally sensitive
+## Git
+- Work on a branch, commit in logical chunks: `feat(scope): …`, `fix(scope): …`.
