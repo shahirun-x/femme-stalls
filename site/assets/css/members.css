@@ -2,7 +2,7 @@
 .tier-1 { background: var(--pink-50); border-color: var(--pink-100); color: var(--pink-700); }
 .tier-2 { background: var(--pink-100); border-color: var(--pink-200); color: var(--pink-700); }
 .tier-3 { background: var(--pink-200); border-color: var(--pink-300); color: var(--pink-800); }
-.tier-4 { background: var(--pink-300); border-color: var(--pink-400); color: #fff; }
+.tier-4 { background: var(--pink-300); border-color: var(--pink-400); color: var(--dark); }
 .tier-5 { background: var(--pink); border-color: var(--pink); color: #fff; }
 .tier-6 { background: linear-gradient(to bottom right, var(--pink-700), var(--gold)); border-color: var(--gold); color: #fff; }
 
@@ -17,7 +17,7 @@
 .compare__card--member .compare__label { color: var(--pink); }
 .compare__flag {
   position: absolute; top: -0.75rem; right: 1.5rem; display: inline-flex; align-items: center; gap: 0.25rem;
-  background: var(--gold); color: #fff; font-size: 10px; line-height: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+  background: var(--gold); color: var(--dark); font-size: 10px; line-height: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
   padding: 0.25rem 0.75rem; border-radius: 999px;
 }
 .compare__flag .icon { width: 0.75rem; height: 0.75rem; }
@@ -57,7 +57,7 @@
 .member-row__name { font-weight: 500; font-size: 0.875rem; line-height: 1.25rem; }
 .member-row__biz { font-family: var(--font-display); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .member-row__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.375rem; font-size: 0.75rem; line-height: 1rem; color: var(--muted); }
-.member-row > .icon { width: 1.25rem; height: 1.25rem; color: var(--gold-dark); }
+.member-row > .icon { width: 1.25rem; height: 1.25rem; color: var(--gold-ink); }
 .directory-empty { text-align: center; color: var(--muted); font-size: 0.875rem; padding: 1.5rem 0 2rem; }
 .member-list { margin-bottom: 2rem; }
 .pill--member { font-size: 0.75rem; line-height: 1rem; font-weight: 500; padding: 0.125rem 0.625rem; }

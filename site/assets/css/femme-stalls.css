@@ -53,7 +53,7 @@
 .edition-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid var(--warm-border); border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s; }
 .edition-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .edition-card__body { display: flex; flex-direction: column; flex: 1; padding: 1.25rem; }
-.edition-card__tag { align-self: flex-start; margin-bottom: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 999px; background: var(--pink-100); color: var(--pink); font-size: 0.75rem; line-height: 1rem; font-weight: 700; }
+.edition-card__tag { align-self: flex-start; margin-bottom: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 999px; background: var(--pink-100); color: var(--pink-700); font-size: 0.75rem; line-height: 1rem; font-weight: 700; }
 .edition-card__date { color: var(--muted); font-size: 0.75rem; line-height: 1rem; margin-bottom: 0.5rem; }
 .edition-card__text { color: var(--muted); font-size: 0.875rem; line-height: 1.25rem; margin-bottom: 1rem; }
 

@@ -9,7 +9,7 @@
 @media (min-width: 640px) { .pink-callout { padding: 2rem; } }
 .pink-callout h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; line-height: 1.75rem; margin-bottom: 0.5rem; }
 @media (min-width: 640px) { .pink-callout h3 { font-size: 1.5rem; line-height: 2rem; } }
-.pink-callout p { color: rgba(255, 255, 255, 0.9); font-size: 0.875rem; line-height: 1.25rem; margin-bottom: 1.25rem; }
+.pink-callout p { color: #fff; font-size: 0.875rem; line-height: 1.25rem; margin-bottom: 1.25rem; }
 @media (min-width: 640px) { .pink-callout p { font-size: 1rem; line-height: 1.5rem; } }
 .btn--onpink { background: #fff; color: var(--pink); min-height: 2.75rem; padding: 0.625rem 1.5rem; }
 .btn--onpink:hover { background: var(--pink-50); }

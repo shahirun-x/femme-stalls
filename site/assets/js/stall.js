@@ -275,7 +275,7 @@
     root.querySelector("[data-dir]").innerHTML = list.map(function (c) {
       return '<li><a class="dir-card" href="/stalls/' + esc(c.slug) + '/">' +
         '<span class="dir-card__logo">' + img(c.logo, c.name + " logo", "store") + "</span>" +
-        "<h3>" + esc(c.name) + "</h3><p>" + esc(c.tagline) + "</p>" +
+        "<h2>" + esc(c.name) + "</h2><p>" + esc(c.tagline) + "</p>" +
         '<span class="dir-card__loc">' + ico("map-pin") + esc(c.location) + "</span>" +
         '<span class="dir-card__cat">' + esc(CATEGORY_LABELS[c.category] || "Other") + "</span>" +
         '<span class="dir-card__go">Visit Stall' + ico("arrow-right") + "</span></a></li>";

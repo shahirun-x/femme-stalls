@@ -104,19 +104,21 @@ Tokens live in `:root` in `base.css`.
 
 | Token | Hex | Usage |
 |---|---|---|
-| `--pink` | `#E91E8B` | Brand pink — inner-page CTAs, accents |
+| `--pink` | `#D2137A` | Brand pink — inner-page CTAs, accents. Deepened from `#E91E8B` so white text on it and pink text on light grounds meet WCAG AA (revert: one line in `base.css`) |
 | `--pink-50/100/200/300/400/500/700/800` | | Tints and shades |
-| `--gold` / `--gold-dark` / `--gold-ink` | `#C5A55A` / `#A68B3E` / `#8A6D2B` | Accents; `--gold-ink` for small text on light grounds (AA) |
+| `--gold` / `--gold-dark` / `--gold-ink` | `#C5A55A` / `#A68B3E` / `#806426` | Accents; use `--gold-ink` for any gold text on light grounds (AA). `--gold` text only on dark grounds |
 | `--dark` / `--dark-deep` / `--dark-card` | `#1A0A12` / `#0D0509` / `#2D1420` | Dark heroes, footer |
 | `--warm-white` / `--warm-bg` / `--warm-border` | `#FFFBFE` / `#FDF2F8` / `#F3D5E5` | Inner-page grounds, borders |
 | `--rose` / `--rose-deep` | `#B5225B` / `#8E1A47` | Homepage headings, key CTAs |
 | `--terracotta`, `--cream`, `--cream-deep`, `--charcoal`, `--blush` | | Homepage editorial palette |
+| `--whatsapp` | `#108043` | WhatsApp buttons (brand `#25D366` fails contrast with white text) |
 
 - Type: **Playfair Display** (display, incl. italics), **Inter** (body), **Dancing Script** (rare signature flourishes). Loaded from Google Fonts with `display=swap`.
 - Breakpoints: 640 / 768 / 1024 / 1280 / 1536.
 - Inner-page line-heights deliberately mirror the Tailwind cascade of the Next app, e.g. a responsive font-size resets line-height to the size's default from 640px up. Keep that when editing so layouts stay consistent.
 - Icons: `<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#name"></use></svg>`. Stroke width is set in CSS (`.icon--thin` = 1.5). To add an icon, add its Lucide name to `scripts/build-icon-sprite.mjs` and run `node scripts/build-icon-sprite.mjs`.
 - **No emojis** anywhere in the UI.
+- Contrast: text on pink tints (`--pink-100` badges, pills) uses `--pink-700`. Check new colour pairs reach 4.5:1 (Lighthouse accessibility must stay 100).
 - Brand: the header uses the cropped hands-and-heart mark + the "Femme Stalls" wordmark set in Playfair (the `brand()` function in `layout.js`; swap it there for a horizontal lockup later). The footer uses the full logo on a cream plate.
 
 ## Conventions

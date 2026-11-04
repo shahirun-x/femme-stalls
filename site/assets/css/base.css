@@ -8,7 +8,7 @@
 /* ---------- Tokens ---------- */
 :root {
   /* Brand pink (from the logo) */
-  --pink: #e91e8b;
+  --pink: #d2137a; /* deepened from #e91e8b so white text and pink text on light grounds meet WCAG AA */
   --pink-50: #fff0f7;
   --pink-100: #ffe0ef;
   --pink-200: #ffb8d9;
@@ -21,7 +21,7 @@
   --gold: #c5a55a;
   --gold-light: #d4af37;
   --gold-dark: #a68b3e;
-  --gold-ink: #8a6d2b; /* small text on light grounds (AA) */
+  --gold-ink: #806426; /* small text on light grounds (AA) */
   --gold-15: rgba(197, 165, 90, 0.15);
   /* Darks */
   --dark: #1a0a12;
@@ -42,7 +42,7 @@
   --cream-deep: #f6ece1;
   --charcoal: #241118;
   --blush: #fbeef3;
-  --whatsapp: #25d366;
+  --whatsapp: #108043; /* AA with white text; brand #25d366 is 2:1 */
 
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -158,7 +158,7 @@ p { overflow-wrap: break-word; }
 .btn--white-outline { border-color: rgba(255, 255, 255, 0.8); color: #fff; font-weight: 500; }
 .btn--white-outline:hover { background: rgba(255, 255, 255, 0.12); }
 .btn--whatsapp { background: var(--whatsapp); color: #fff; }
-.btn--whatsapp:hover { background: #1ebe5a; }
+.btn--whatsapp:hover { background: #0d6b38; }
 .btn--soft { background: var(--pink-50); color: var(--pink); }
 .btn--soft:hover { background: var(--pink-100); }
 .btn[aria-busy="true"] { opacity: 0.75; pointer-events: none; }
@@ -322,7 +322,7 @@ p { overflow-wrap: break-word; }
 .drawer__foot { margin-top: auto; padding: 1.5rem; background: var(--warm-bg); border-top: 1px solid var(--warm-border); text-align: center; }
 .drawer__foot .font-script { color: var(--gold); font-size: 1.125rem; margin-bottom: 0.75rem; }
 .drawer__foot small { display: block; margin-top: 0.75rem; font-size: 0.75rem; color: var(--muted); }
-.drawer__foot strong { color: var(--gold-dark); }
+.drawer__foot strong { color: var(--gold-ink); }
 
 /* ==========================================================================
    Footer

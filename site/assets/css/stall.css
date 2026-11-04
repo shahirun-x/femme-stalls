@@ -160,7 +160,7 @@
 .dir-card { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; text-align: center; height: 100%; border-radius: var(--radius-lg); border: 1px solid var(--warm-border); background: #fff; padding: 1.5rem; box-shadow: var(--shadow-sm); transition: box-shadow 0.2s, border-color 0.2s; }
 .dir-card:hover { box-shadow: var(--shadow); border-color: rgba(233, 30, 139, 0.4); }
 .dir-card__logo { position: relative; width: 4rem; height: 4rem; border-radius: 50%; overflow: hidden; border: 2px solid rgba(233, 30, 139, 0.3); background: var(--pink-50); --client-secondary: var(--pink-50); --client-primary: var(--pink); }
-.dir-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.125rem; line-height: 1.75rem; }
+.dir-card h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.125rem; line-height: 1.75rem; }
 .dir-card p { font-size: 0.875rem; line-height: 1.25rem; color: var(--muted); }
 .dir-card__loc { display: inline-flex; align-items: center; gap: 0.25rem; font-size: 0.75rem; line-height: 1rem; color: var(--muted); }
 .dir-card__loc .icon { width: 0.875rem; height: 0.875rem; color: var(--pink); }

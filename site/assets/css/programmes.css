@@ -11,7 +11,7 @@
 @media (min-width: 640px) { .plain-head h2 { font-size: 2.25rem; line-height: 2.5rem; } }
 .org-tile { position: relative; display: flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem; border-radius: 1rem; background: var(--pink-50); border: 1px solid var(--pink-200); color: var(--pink); }
 .org-tile .icon { width: 1.5rem; height: 1.5rem; }
-.org-num { position: absolute; top: -0.5rem; right: -0.5rem; display: flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--gold); color: #fff; font-size: 10px; line-height: 15px; font-weight: 700; }
+.org-num { position: absolute; top: -0.5rem; right: -0.5rem; display: flex; align-items: center; justify-content: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--gold); color: var(--dark); font-size: 10px; line-height: 15px; font-weight: 700; }
 .org-step h3 { margin-top: 1rem; margin-bottom: 0.25rem; }
 .org-step p { max-width: 10rem; font-size: 0.75rem; line-height: 1.625; color: var(--muted); }
 
