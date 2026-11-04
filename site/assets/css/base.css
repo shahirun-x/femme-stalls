@@ -243,10 +243,10 @@ p { overflow-wrap: break-word; }
   padding: 0.75rem 0.5rem; list-style: none;
   background: var(--warm-white); border: 1px solid var(--warm-border); border-radius: var(--radius-card);
   box-shadow: var(--shadow-xl); opacity: 0; visibility: hidden; transform: translateY(-0.5rem);
-  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+  transition: opacity 0.2s, transform 0.2s, visibility 0s linear 0.2s;
 }
 .nav__menu--right { left: auto; right: 0; }
-.nav__item:hover > .nav__menu, .nav__item.is-open > .nav__menu { opacity: 1; visibility: visible; transform: none; }
+.nav__item:hover > .nav__menu, .nav__item.is-open > .nav__menu { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
 /* Invisible bridge so the pointer can cross the gap into the menu. */
 .nav__menu::before { content: ""; position: absolute; left: 0; right: 0; top: -0.5rem; height: 0.5rem; }
 .nav__menu a {
