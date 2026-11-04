@@ -422,3 +422,8 @@ a.family-card:focus-visible { outline: 2px solid var(--rose); outline-offset: 4p
 .closing__socials a:hover { border-color: var(--cream); background: var(--cream); color: var(--rose-deep); }
 .closing__socials .icon { color: currentColor; }
 .closing a:focus-visible { outline: 2px solid var(--cream); outline-offset: 3px; }
+
+/* Skip layout and paint for sections that start below the fold until they
+   approach the viewport (cuts first-load style/layout work on phones). */
+.home > .offer, .home > .numbers, .home > .edition, .home > .discover,
+.home > .journey, .home > .voices, .home > .closing { content-visibility: auto; contain-intrinsic-size: auto 900px; }

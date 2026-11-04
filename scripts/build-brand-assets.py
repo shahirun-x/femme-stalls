@@ -80,7 +80,7 @@ def save_pair(img: Image.Image, stem: Path, quality: int = 88) -> None:
     """PNG (or JPEG for photos) fallback + WebP."""
     if stem.suffix == ".jpg":
         img.convert("RGB").save(stem, quality=84, optimize=True, progressive=True)
-        img.convert("RGB").save(stem.with_suffix(".webp"), quality=80, method=6)
+        img.convert("RGB").save(stem.with_suffix(".webp"), quality=72, method=6)
     else:
         img.save(stem.with_suffix(".png"), optimize=True)
         img.save(stem.with_suffix(".webp"), quality=quality, method=6)
@@ -157,8 +157,10 @@ def build_sisters() -> None:
 def build_photos() -> None:
     print("Photography")
     hero = Image.open(ROOT / "public/images/placeholder/hero.jpg")
-    for w in (800, 1200):
-        save_pair(hero.resize((w, round(w * hero.height / hero.width)), Image.LANCZOS), IMG / f"hero-{w}.jpg")
+    for w in (600, 800, 1200):
+        img = hero.resize((w, round(w * hero.height / hero.width)), Image.LANCZOS)
+        save_pair(img, IMG / f"hero-{w}.jpg")
+        img.save(IMG / f"hero-{w}.webp", quality=60, method=6)  # LCP image: lighter WebP
     for f in sorted((ROOT / "public/images/placeholder").glob("*.jpg")):
         if f.stem == "hero":
             continue

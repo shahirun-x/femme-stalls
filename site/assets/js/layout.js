@@ -141,7 +141,8 @@
       });
     }
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    // First check waits for load so it does not force an early layout mid-parse.
+    window.addEventListener("load", onScroll);
 
     // Desktop dropdowns: hover (CSS) + full keyboard support
     var items = header.querySelectorAll(".nav__item--menu");

@@ -94,7 +94,14 @@
       if (next) next.addEventListener("click", function () { by(1); });
       track.addEventListener("scroll", update, { passive: true });
       window.addEventListener("resize", update);
-      update();
+      // Initial state is set in the HTML (prev disabled); measure only once the
+      // scroller nears the viewport so page load never pays for a forced layout.
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { io.disconnect(); update(); }
+        }, { rootMargin: "200px" });
+        io.observe(root);
+      } else update();
     });
   }
 
