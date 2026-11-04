@@ -4,7 +4,7 @@
 .join-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; line-height: 2rem; margin-bottom: 0.75rem; }
 .join-card > p { color: var(--muted); font-size: 0.875rem; line-height: 1.625; margin-bottom: 1.5rem; }
 @media (min-width: 640px) { .join-card > p { font-size: 1rem; line-height: 1.5rem; } }
-.join-card .btn { margin-bottom: 1.25rem; padding-block: 0.875rem; }
+.join-card .btn { margin-bottom: 1.25rem; padding-block: 0.875rem; white-space: normal; }
 .join-card > .join-card__wa { margin-bottom: 0; }
 .join-card__wa { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.25rem 0.5rem; color: var(--muted); font-size: 0.875rem; line-height: 1.25rem; }
 .join-card__wa .icon { color: var(--pink); }
