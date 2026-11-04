@@ -8,11 +8,13 @@
   "category": "clothes",
   "colors": {
     "primary": "#C4956A",
+    "accentText": "#8F6239",
+    "onPrimary": "#2D2524",
     "secondary": "#FAEAE4",
     "accent": "#C9917E",
     "background": "#FFF8F5",
     "text": "#2D2524",
-    "textSecondary": "#8A7E7C"
+    "textSecondary": "#726664"
   },
   "whatsapp": "919876543210",
   "phone": "9876543210",

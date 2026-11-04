@@ -307,8 +307,12 @@
         missing("Coming soon", c.name + " hasn't opened this page yet.", "/stalls/" + c.slug + "/", "Visit " + c.name);
         return;
       }
+      // primary: backgrounds, borders, decoration. accentText: the brand colour for
+      // text and meaningful icons on light grounds (>= 4.5:1). onPrimary: text set
+      // on primary-filled surfaces. Both default for clients with dark brand colours.
       var k = c.colors;
-      root.style.cssText = "--client-primary:" + k.primary + ";--client-secondary:" + k.secondary + ";--client-accent:" + k.accent +
+      root.style.cssText = "--client-primary:" + k.primary + ";--client-accent-text:" + (k.accentText || k.primary) +
+        ";--client-on-primary:" + (k.onPrimary || "#fff") + ";--client-secondary:" + k.secondary + ";--client-accent:" + k.accent +
         ";--client-bg:" + k.background + ";--client-text:" + k.text + ";--client-text-secondary:" + k.textSecondary;
       var body = page === "products" ? products(c) : page === "orders" ? orders(c) : intro(c);
       root.innerHTML = header(c) + body + footer();

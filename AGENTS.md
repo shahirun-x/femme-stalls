@@ -87,6 +87,10 @@ Each stall client gets up to three pages: intro (free), products and reviews/ord
 1. Copy `site/stalls/magalir-mattum/` to `site/stalls/<slug>/` (keep only the page folders the client has enabled).
 2. In each shell set `data-slug="<slug>"` and hand-edit `<title>`, description, canonical and OG tags.
 3. Add `site/data/stalls/<slug>.json` (copy `magalir-mattum.json`; the shape is the old `StallClient` type). `pagesEnabled` is `1` (intro), `2` (+ products) or `3` (+ reviews & orders).
+   - `colors.primary` is the client's brand colour, used for backgrounds, borders and decoration.
+   - `colors.accentText` (optional, defaults to `primary`): the brand colour for text and meaningful icons on light grounds. Required when `primary` is light: pick the lightest shade of the same hue with ≥ 4.5:1 contrast on white, `background` and `secondary` (Magalir Mattum: tan `#C4956A` → `#8F6239`).
+   - `colors.onPrimary` (optional, defaults to `#fff`): text on primary-filled chips, badges and buttons. Use the client's dark text colour when white on `primary` is below 4.5:1.
+   - `colors.textSecondary` must also reach 4.5:1 on white, `background` and `secondary`.
 4. Add the slug to `site/data/stalls/index.json` so it appears on `/stalls/`.
 5. Put the logo at `site/assets/img/stalls/<slug>/logo.png` (+ `.webp`; `scripts/build-brand-assets.py` generates both from `public/stalls/<slug>/logo.png`).
 6. Add the URLs to `sitemap.xml`.
