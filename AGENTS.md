@@ -44,12 +44,14 @@ site/
                                  flows, timeline, accordion, forms)
     css/<page>.css               one small file per inner page; stall.css for stall pages
     js/config.js  layout.js  ui.js  home.js  filters.js  forms.js  stall.js
-    brand/                       logos (PNG + WebP), favicons, og-image.png
+    brand/                       logos (PNG + WebP), favicons, og-image.png (mark + wordmark;
+                                 og-image-circle.png is the previous full-logo card)
     img/                         photography (JPEG + WebP), stall logos
     icons.svg                    Lucide SVG sprite
   data/stalls/                   index.json + one <slug>.json per stall client
 backend/google-apps-script/      Code.gs + deploy README for the form backend
-scripts/                         dev-time asset generators (outputs are committed)
+scripts/                         dev-time asset generators (outputs are committed);
+                                 og/og.html is the Open Graph card template
 ```
 
 ## Page template

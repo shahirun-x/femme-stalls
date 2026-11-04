@@ -15,7 +15,9 @@ Outputs (site/)
   assets/brand/femme-mark.{png,webp}       hands-and-heart mark, transparent
   assets/brand/femme-logo.{png,webp}       full logo, transparent (cream plate)
   assets/brand/<sister>.{png,webp}         sister-brand logos, full colour
-  assets/brand/favicon-32.png, apple-touch-icon.png, og-image.png
+  assets/brand/favicon-32.png, apple-touch-icon.png
+  assets/brand/og-image.png                mark + wordmark card (scripts/og/og.html, headless Chrome)
+  assets/brand/og-image-circle.png         previous full-logo card (copy over og-image.png to revert)
   favicon.ico                              16/32/48
   assets/img/*.{jpg,webp}                  hero + category photography
   assets/img/stalls/<slug>/logo.{png,webp}
@@ -23,7 +25,9 @@ Outputs (site/)
 
 from __future__ import annotations
 
+import os
 import shutil
+import subprocess
 from pathlib import Path
 
 from PIL import Image, ImageChops, ImageDraw, ImageFilter
@@ -32,6 +36,14 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT.parent / "brand-assets"
 SITE = ROOT / "site"
 BRAND = SITE / "assets" / "brand"
+OG = ROOT / "scripts" / "og"
+CHROME_PATHS = [
+    os.environ.get("CHROME_PATH"),
+    r"C:\Program Files\Google\Chrome\Application\chrome.exe",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "/usr/bin/google-chrome",
+    "/usr/bin/chromium",
+]
 IMG = SITE / "assets" / "img"
 for d in (BRAND, IMG):
     d.mkdir(parents=True, exist_ok=True)
@@ -135,7 +147,25 @@ def build_femme() -> None:
     og = wash.filter(ImageFilter.GaussianBlur(120)).convert("RGBA")
     logo = fit(full, 520, 520)
     og.alpha_composite(logo, ((1200 - logo.width) // 2, (630 - logo.height) // 2))
-    og.convert("RGB").save(BRAND / "og-image.png", optimize=True)
+    og.convert("RGB").save(BRAND / "og-image-circle.png", optimize=True)
+    print("  og-image-circle.png  1200x630 (previous card; copy over og-image.png to revert)")
+
+    # Open Graph (current): the mark + "Femme Stalls" set in Playfair Display on
+    # cream, rendered from scripts/og/og.html with headless Chrome.
+    fit(mark, 600, 320).save(OG / "mark.png", optimize=True)
+    render_og()
+
+
+def render_og() -> None:
+    chrome = next((c for c in CHROME_PATHS if c and Path(c).exists()), None)
+    if not chrome:
+        print("  og-image.png skipped: set CHROME_PATH to a Chrome/Chromium binary")
+        return
+    out = BRAND / "og-image.png"
+    subprocess.run([chrome, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
+                    "--window-size=1200,630", "--virtual-time-budget=10000", f"--screenshot={out}",
+                    (OG / "og.html").as_uri()], check=True, capture_output=True)
+    Image.open(out).convert("RGB").crop((0, 0, 1200, 630)).save(out, optimize=True)
     print("  og-image.png  1200x630")
 
 
