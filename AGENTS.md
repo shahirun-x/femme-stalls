@@ -20,7 +20,9 @@ The Next.js 15 app at the repo root (`src/`, `public/`, `package.json`) is kept 
 | Page content | Directly in each page's `index.html` (good for SEO) |
 | Shared header + footer | `site/assets/js/layout.js` (single source of truth) |
 | Contact, socials, WhatsApp messages, Sheets URL, Geohomz family | `site/assets/js/config.js` |
-| Behaviour (reveal, accordions, count-up, slider, scroller, filters) | `site/assets/js/ui.js` |
+| Shared behaviour (contact links, reveal, accordions) | `site/assets/js/ui.js` |
+| Homepage-only (Geohomz family, count-up, slider, scroller) | `site/assets/js/home.js` (loaded before `ui.js`) |
+| Gallery chips + directory search (media, members) | `site/assets/js/filters.js` |
 | Forms → Google Sheets | `site/assets/js/forms.js` + `backend/google-apps-script/` |
 | Client stall pages | `site/assets/js/stall.js` + `site/data/stalls/*.json` |
 
@@ -41,7 +43,7 @@ site/
     css/pages.css                shared inner-page components (hero, section head, cards, grid,
                                  flows, timeline, accordion, forms)
     css/<page>.css               one small file per inner page; stall.css for stall pages
-    js/config.js  layout.js  ui.js  forms.js  stall.js
+    js/config.js  layout.js  ui.js  home.js  filters.js  forms.js  stall.js
     brand/                       logos (PNG + WebP), favicons, og-image.png
     img/                         photography (JPEG + WebP), stall logos
     icons.svg                    Lucide SVG sprite
@@ -122,7 +124,7 @@ Tokens live in `:root` in `base.css`.
 - All phone/email/WhatsApp/social links come from `config.js`. In HTML use `data-wa="membership"` (key or literal message), `data-mail="Subject"`, `data-tel`, `data-social="instagram"`, and `<span data-contact="phone|email|address">`. `ui.js` fills them in.
 - Scroll reveal: add `class="reveal"` (+ `style="--delay:120ms"` to stagger). Reduced-motion users see content instantly.
 - Accordions: native `<details>` inside `.accordion`, with the body wrapped in `.accordion__panel`.
-- Budgets: CSS ≤ 60 KB and JS ≤ 30 KB per page, excluding fonts and images.
+- Budgets (gzipped, per page, excluding fonts and images): CSS ≤ 20 KB, JS ≤ 15 KB. No minifier or build step; stay under by removing dead code and loading page-specific scripts only where they are used.
 - Never use `overflow-x: hidden` on `body`. Fix the overflowing element instead.
 
 ## Verify before committing
