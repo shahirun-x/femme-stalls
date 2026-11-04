@@ -50,3 +50,5 @@
 .press-box a { display: flex; align-items: center; gap: 0.625rem; min-height: 1.5rem; font-size: 0.875rem; line-height: 1.25rem; transition: color 0.2s; overflow-wrap: anywhere; }
 .press-box a:hover { color: var(--pink); }
 .press-box .icon { color: var(--pink); }
+#press-contact .lead { line-height: 1.5rem; }
+@media (min-width: 640px) { #press-contact .lead { line-height: 1.75rem; } }

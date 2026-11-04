@@ -61,3 +61,5 @@
 .directory-empty { text-align: center; color: var(--muted); font-size: 0.875rem; padding: 1.5rem 0 2rem; }
 .member-list { margin-bottom: 2rem; }
 .pill--member { font-size: 0.75rem; line-height: 1rem; font-weight: 500; padding: 0.125rem 0.625rem; }
+.member-list { --g: 1rem; }
+@media (min-width: 640px) { .member-list { --g: 1.25rem; } }

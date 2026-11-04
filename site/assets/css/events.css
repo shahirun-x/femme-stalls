@@ -34,6 +34,7 @@
 .past-card__body { padding: 1rem; }
 @media (min-width: 640px) { .past-card__body { padding: 1.25rem; } }
 .past-card .pill { margin-bottom: 0.5rem; }
+.past-card .edition-links { margin-top: 0.75rem; }
 .past-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 0.875rem; line-height: 1.375; margin-bottom: 0.25rem; }
 @media (min-width: 640px) { .past-card h3 { font-size: 1rem; } }
 .past-card__date { color: var(--muted); font-size: 0.75rem; line-height: 1rem; margin-bottom: 0.75rem; }
