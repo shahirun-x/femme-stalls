@@ -145,7 +145,9 @@ python -m http.server 8080 --directory site
 
 ## Hosting
 - **Vercel:** create a project with **Root Directory = `site`** and Framework Preset = Other (no build command). `site/vercel.json` sets clean URLs, trailing slashes, security and cache headers.
-- **cPanel / Apache:** upload the contents of `site/` to `public_html/`. `site/.htaccess` forces HTTPS + www, serves `404.html` and sets compression and caching.
+- **cPanel / Apache / LiteSpeed (e.g. eWebGuru):** run `python scripts/build-upload-zip.py` → `femme-stalls-site.zip` (git-ignored; `index.html`, `.htaccess`, `web.config` at the zip root; `vercel.json`, READMEs and OS clutter left out). In File Manager upload it to `public_html/` and Extract. `site/.htaccess` forces HTTPS + www, serves `404.html`, and sets compression and caching. Every module-specific block is in `<IfModule>`, so a missing module can't cause a 500.
+- **Windows / IIS (Plesk):** `site/web.config` mirrors the same rules (needs the IIS URL Rewrite module for the redirects). Apache ignores it.
+- Nothing depends on Vercel: every link is a folder URL ending in `/` (served by that folder's `index.html`) or a real file, and every asset path is root-absolute. The site must live at the domain root, not in a subfolder.
 - Canonical domain: `https://www.femmestalls.com`.
 
 ## Deferred
