@@ -1,0 +1,63 @@
+/* Femme Stalls page — stats, how-it-works, pricing, banner, archive */
+.paras > p { color: var(--muted); font-size: 1rem; line-height: 1.625; }
+.paras > p + p { margin-top: 1.25rem; }
+@media (min-width: 640px) { .paras > p { font-size: 1.125rem; line-height: 1.75rem; } }
+
+.stat-card { position: relative; background: #fff; border: 1px solid var(--warm-border); border-radius: var(--radius); padding: 1.25rem; }
+@media (min-width: 640px) { .stat-card { padding: 1.5rem; } }
+.stat-card .icon { position: absolute; top: 1rem; right: 1rem; color: var(--gold); }
+.stat-card__value { font-family: var(--font-display); font-weight: 700; color: var(--pink); font-size: 1.875rem; line-height: 2.25rem; }
+@media (min-width: 768px) { .stat-card__value { font-size: 2.25rem; line-height: 2.5rem; } }
+.stat-card__label { margin-top: 0.25rem; font-size: 0.875rem; line-height: 1.25rem; color: var(--muted); }
+
+.how-num {
+  display: flex; align-items: center; justify-content: center; width: 4rem; height: 4rem; border-radius: 50%;
+  background: linear-gradient(to bottom right, var(--pink), var(--pink-700)); color: #fff;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.125rem; line-height: 1.75rem;
+}
+.how-num--final { width: 5rem; height: 5rem; font-size: 1.5rem; line-height: 2rem; box-shadow: 0 10px 15px -3px rgba(233, 30, 139, 0.3); }
+.how-icon { margin: 1rem 0 0.75rem; }
+.flow__step p { max-width: 14rem; }
+@media (min-width: 768px) { .flow__dash--center { align-self: center; flex: none; margin-top: 2rem; } }
+
+.pricing { background: #fff; border-radius: var(--radius); border-top: 4px solid var(--gold); box-shadow: var(--shadow-sm); padding: 1.5rem; }
+@media (min-width: 640px) { .pricing { padding: 2rem; } }
+.pricing h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; line-height: 1.75rem; margin-bottom: 1.25rem; }
+.pricing dl { display: grid; gap: 1rem; margin: 0 0 1.25rem; }
+.pricing dl > div { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--warm-border); font-size: 0.875rem; line-height: 1.25rem; }
+.pricing dl > div:last-child { padding-bottom: 0; border-bottom: 0; }
+@media (min-width: 640px) { .pricing dl > div { font-size: 1rem; line-height: 1.5rem; } }
+.pricing dt { font-weight: 500; }
+.pricing dd { margin: 0; color: var(--pink); font-weight: 600; }
+.pricing p { color: var(--muted); font-size: 0.75rem; line-height: 1.625; }
+
+.banner-title { font-family: var(--font-display); font-weight: 700; font-size: 1.875rem; line-height: 2.25rem; margin-bottom: 0.75rem; }
+@media (min-width: 640px) { .banner-title { font-size: 2.25rem; line-height: 2.5rem; } }
+@media (min-width: 768px) { .banner-title { font-size: 3rem; line-height: 1; } }
+.banner-date { color: var(--pink-400); font-weight: 500; margin-bottom: 0.25rem; }
+.banner-place { color: rgba(255, 251, 254, 0.7); font-size: 0.875rem; line-height: 1.25rem; margin-bottom: 2rem; }
+.banner-details { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; margin: 0 0 2.5rem; font-size: 0.875rem; line-height: 1.25rem; }
+@media (min-width: 640px) { .banner-details { flex-direction: row; gap: 2.5rem; font-size: 1rem; line-height: 1.5rem; } }
+.banner-details > div { display: flex; align-items: center; gap: 0.5rem; }
+.banner-details .icon { color: var(--gold); }
+.banner-details dt { color: rgba(255, 251, 254, 0.6); }
+.banner-details dd { margin: 0; color: #fff; font-weight: 500; }
+.banner-note { margin-top: 1rem; color: rgba(255, 251, 254, 0.5); font-size: 0.75rem; line-height: 1rem; }
+
+.who-head { text-align: center; margin-bottom: 3rem; }
+.who-head h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.875rem; line-height: 2.25rem; margin-bottom: 1rem; }
+@media (min-width: 640px) { .who-head h2 { font-size: 2.25rem; line-height: 2.5rem; } }
+.closing-line { text-align: center; font-family: var(--font-display); font-style: italic; font-size: 1rem; line-height: 1.5rem; }
+@media (min-width: 640px) { .closing-line { font-size: 1.125rem; line-height: 1.75rem; } }
+
+.edition-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid var(--warm-border); border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: transform 0.3s, box-shadow 0.3s; }
+.edition-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.edition-card__body { display: flex; flex-direction: column; flex: 1; padding: 1.25rem; }
+.edition-card__tag { align-self: flex-start; margin-bottom: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 999px; background: var(--pink-100); color: var(--pink-700); font-size: 0.75rem; line-height: 1rem; font-weight: 700; }
+.edition-card__date { color: var(--muted); font-size: 0.75rem; line-height: 1rem; margin-bottom: 0.5rem; }
+.edition-card__text { color: var(--muted); font-size: 0.875rem; line-height: 1.25rem; margin-bottom: 1rem; }
+
+.next-card { max-width: 28rem; margin-inline: auto; text-align: center; border: 2px solid var(--gold); border-radius: var(--radius); padding: 1.5rem; background: linear-gradient(to bottom right, var(--dark), var(--dark-card), var(--dark-deep)); }
+@media (min-width: 640px) { .next-card { padding: 2rem; } }
+.next-card p { color: var(--gold); font-size: 0.75rem; line-height: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.next-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; line-height: 2rem; color: #fff; margin-bottom: 1rem; }
